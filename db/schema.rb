@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 2021_01_31_004629) do
 
   create_table "bookings", force: :cascade do |t|
     t.float "total_price"
-    t.date "from"
-    t.date "till"
+    t.datetime "from"
+    t.datetime "till"
     t.bigint "user_id", null: false
     t.bigint "bike_id", null: false
     t.datetime "created_at", precision: 6, null: false
