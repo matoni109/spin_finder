@@ -50,7 +50,7 @@ count = 0
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     bio: Faker::TvShows::Buffy.quote,
-    location: "Melbourne",
+    location: ["Perth", "Melbourne", "Sydney", "Darwin", "Brisbane", "Byron Bay"].sample,
     email: Faker::Internet.email,
     password: Faker::Name.name_with_middle
   )
@@ -75,7 +75,7 @@ count = 0
     name: Faker::Cannabis.strain,
     available: [true, false].sample,
     description: Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote,
-    location: ["Perth", "Melbourne", "Sydney", "Darwin"].sample,
+    location: ["Perth", "Melbourne", "Sydney", "Darwin", "Brisbane", "Byron Bay"].sample,
     rating: rand(2..5),
     user_id: User.pluck(:id).sample
   )
