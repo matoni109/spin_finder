@@ -8,4 +8,5 @@ class Bike < ApplicationRecord
 
   ## Images
   has_many_attached :images
+
 end
