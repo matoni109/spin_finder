@@ -1,7 +1,7 @@
 require "open-uri"
 require  'json'
 
-puts "--- GAME START ---"
+puts "--- GAME  START ---"
 puts "---"
 puts "---"
 puts "cleaning house :)"
@@ -31,6 +31,7 @@ puts "-- Making Humans"
     bio: "$GME goes BRRRRRRRR 💎🙌",
     location: "Melbourne",
     email: "john@gmail.com",
+    admin: true,
     password: "123456"
   )
   make_me.avatar.attach(io: file, filename: "#{make_me.first_name}.jpeg", content_type: 'image/jpeg')
