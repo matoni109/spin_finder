@@ -4,5 +4,5 @@ class Favourite < ApplicationRecord
 
   validates :user, uniqueness: { scope: :bike }
 
-  ## TODO User can not Favourite his own bike
+  ## TODO User can not Favourite a bike twice
 end

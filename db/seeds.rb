@@ -26,11 +26,11 @@ puts "-- Making Humans"
   file = File.open("./db/avatars/00.jpeg")
 
   make_me = User.create!(
-    first_name: "Deep Fucking",
-    last_name: "Value",
+    first_name: "Spin",
+    last_name: "Daddy",
     bio: "$GME goes BRRRRRRRR 💎🙌",
     location: "Melbourne",
-    email: "john@gmail.com",
+    email: "spin@gmail.com",
     admin: true,
     password: "123456"
   )
