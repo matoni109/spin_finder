@@ -7,7 +7,7 @@ class Booking < ApplicationRecord
 
   ## TODO User can not book his own bike
   # owner => booking.bike.user.id != user_id
-  # validates :bike, uniqueness: { scope: :bike,  message: "you can't book you're own bike :| "}
+  # validates :bike, uniqueness: { scope: :bike,  message: "you can't book your own bike :| "}
 end
 
 # https://github.com/seejohnrun/ice_cube
