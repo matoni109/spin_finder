@@ -11,9 +11,9 @@ AllCops:
     - 'test/**/*'
 
 Style/ConditionalAssignment:
-  Enabled: false
+  Enabled: true
 Style/StringLiterals:
-  Enabled: false
+  Enabled: true
 Style/RedundantReturn:
   Enabled: false
 Style/Documentation:
