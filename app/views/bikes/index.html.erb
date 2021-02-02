@@ -3,9 +3,8 @@
         <% @bikes.each do |bike| %>
         <div class="col-lg-4 col-md-6 col-sm-12 py-1">
             <div class="card" style="width: 100%;">
+                <%= cl_image_tag(bike.images[0].key, :height=>200, :quality=>"auto", :fetch_format=>:auto, :transformation => { :dpr => "auto", :responsive => true, :width => "auto", :crop => "scale", })%>
                 <img class="card-i.namg-top" src="" alt="Card image cap">
-                <%= cl_image_tag bike.images[0].key, brightness: 30, radius: 20,
-  width: 150, height: 150 %>
                 <div class="card-body">
                     <h5 class="card-title">
                         <%= bike.name %>
