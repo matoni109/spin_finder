@@ -1,15 +1,72 @@
-<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="#">Spin Finder</a>
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Sign Up</a>
-      </li>
-      <li class="nav-item">
-        <!-- Need to create links between buttons and views -->
-        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-      </li>
-     </ul>
+<div class="container-fluid header d-flex">
+  <div class="page-header d-flex">
+    <h1>Search for places to ride a <span>bike.</span></h1>
+    <form class="navbar-form" role="search">
+    <div class="form-group">
+    <input type="text" class="form-control" placeholder="E.g. Richmond, Victoria">
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+</div>
+
+<!-- Image grid for popular categories of bikes -->
+
+<div class="container">
+
+  <h2 class="font-weight-light text-center text-lg-left mt-4 mb-0">Popular Categories</h2>
+
+  <hr class="mt-2 mb-5">
+
+  <div class="row text-center text-lg-left">
+
+    <!-- Road Bike -->
+    <div class="col-lg-3 col-md-4 col-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid" src="https://source.unsplash.com/HPpj2190tGs/400x300" alt="Road Bike">
+      </a>
+    </div>
+    <!-- Mountain Bike -->
+    <div class="col-lg-3 col-md-4 col-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid" src="https://source.unsplash.com/YOphb-Xr2sk/400x300" alt="Mountain Bike">
+      </a>
+    </div>
+    <!-- Commuter Bike -->
+    <div class="col-lg-3 col-md-4 col-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid" src="https://source.unsplash.com/WyoD7dui5WI/400x300" alt="Commuter Bike">
+      </a>
+    </div>
+    <!-- Gravel Bike -->
+    <div class="col-lg-3 col-md-4 col-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid" src="https://source.unsplash.com/FafiIrfd-Vw/400x300" alt="Gravel Bike">
+      </a>
+    </div>
+    <!-- Electric Bike -->
+    <div class="col-lg-3 col-md-4 col-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid" src="https://source.unsplash.com/qZ1KmFjfQq8/400x300" alt="Electric Bike">
+      </a>
+    </div>
+    <!-- Fat Bike -->
+    <div class="col-lg-3 col-md-4 col-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid" src="https://source.unsplash.com/vBC6hHHW6r8/400x300" alt="Fat Bike">
+      </a>
+    </div>
+    <!-- Fixed Gear Bike -->
+    <div class="col-lg-3 col-md-4 col-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid" src="https://source.unsplash.com/jpgJSBQtw5U/400x300" alt="Fixed Gear Bike">
+      </a>
+    </div>
+    <!-- BMX Bike -->
+    <div class="col-lg-3 col-md-4 col-6">
+      <a href="#" class="d-block mb-4 h-100">
+        <img class="img-fluid" src="https://source.unsplash.com/Z6Fi-a4zizc/400x300" alt="BMX bike">
+      </a>
     </div>
   </div>
-</nav>
+</div>

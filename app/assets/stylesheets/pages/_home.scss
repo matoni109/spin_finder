@@ -1,1 +1,21 @@
 // Specific CSS for your home-page
+/* Hero Banner Container */
+
+.header {
+  height: 700px;
+  justify-content: center;
+  background-image: url("https://i.ibb.co/cXX8yH1/api-mapbox-com-styles-v1-mapbox-light-v10-html-title-true-access-token-pk-ey-J1-Ijoib-WFw-Ym94-Iiwi.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.page-header {
+  flex-direction: column;
+  width: 50%;
+  justify-content: center;
+}
+
+.page-header span {
+  color: red;
+}
