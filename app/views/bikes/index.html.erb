@@ -1,2 +1,23 @@
-<h1>Bikes#index</h1>
-<p>Find me in app/views/bikes/index.html.erb</p>
+<div class="container">
+    <div class="row mx-auto justify-content-around py-5">
+        <% @bikes.each do |bike| %>
+        <div class="col-lg-4 col-md-6 col-sm-12 py-1">
+            <div class="card" style="width: 100%;">
+                <img class="card-i.namg-top" src="" alt="Card image cap">
+                <%= cl_image_tag bike.images[0].key, brightness: 30, radius: 20,
+  width: 150, height: 150 %>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%= bike.name %>
+                    </h5>
+                    <p class="card-text">
+                        <i class="fas fa-dollar-sign"></i>
+                        <%= bike.id %>
+                    </p>
+                    <%= link_to "More Info", bike_path(bike) , class: "btn btn-link" %>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>
