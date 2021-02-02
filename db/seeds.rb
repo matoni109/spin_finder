@@ -100,6 +100,9 @@ puts "-- Making Bookings !"
 10.times do
 
   ## make the instance
+  # TODO:
+  # owner => me.bike.user.id != user_id
+
   make_me = Booking.create!(
     total_price: rand(25..85), ## TODO:: work out total price
     from: Time.now + (rand(10..20) * rand(30000..40000 )),
