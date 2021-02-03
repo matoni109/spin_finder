@@ -1,12 +1,17 @@
 class Booking < ApplicationRecord
+  validate :own_bike?, on: :create
 
   belongs_to :user
   belongs_to :bike
-  has_many :reviews,  dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   ## TODO User can not book his own bike
-  # owner => booking.bike.user.id != user_id
-  # validates :bike, uniqueness: { scope: :bike,  message: "you can't book your own bike :| "}
+
+  def own_bike?
+    if bike.user.id == user_id
+      errors.add(:bike, "can't be your own bike")
+    end
+  end
 end
 
 # https://github.com/seejohnrun/ice_cube

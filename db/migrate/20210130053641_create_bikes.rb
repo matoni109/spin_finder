@@ -3,7 +3,7 @@ class CreateBikes < ActiveRecord::Migration[6.0]
     create_table :bikes do |t|
       t.float :price
       t.string :name
-      t.boolean :available
+      t.boolean :available, default: true
       t.string :description
       t.string :location
       t.integer :rating
