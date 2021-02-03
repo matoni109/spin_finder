@@ -139,7 +139,8 @@ until book_fav == 10 do
   count_fav = 0
   until count_fav == 10 do
       make_me = Favourite.new(
-        bike_id: Bike.pluck(:id).sample,
+        favorited_type: Bike,
+        favorited_id: Bike.pluck(:id).sample,
         user_id: User.pluck(:id).sample
       )
       if make_me.valid?
