@@ -67,7 +67,7 @@ puts "--- Making Bikes Bro !!"
 ### Make some Bikes ###
 count = 0
 
-5.times do
+12.times do
   find_image = Dir.children("./db/bikes/")
   ## make the instance
 
