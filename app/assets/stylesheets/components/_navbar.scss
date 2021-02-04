@@ -20,6 +20,10 @@
   letter-spacing: 1px;
 }
 
+.navbar {
+  margin-bottom: 50px;
+}
+
 /* Bike Category Card Styling */
 
 .img__description {
@@ -41,7 +45,7 @@
 .card-bike-category {
   .img-fluid:hover {
     background: black;
-    opacity: 0.7;
+    opacity: 0;
     transition: .5s ease;
   }
 }
