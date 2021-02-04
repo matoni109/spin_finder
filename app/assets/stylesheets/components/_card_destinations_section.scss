@@ -1,0 +1,23 @@
+// Destination images styling
+
+.card-large-destination {
+  width: 100%;
+  background-color: #EBEBEB;
+  padding: 50px 0px;
+}
+
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.column {
+  padding: 15px;
+}
+
+.img-fluid {
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
