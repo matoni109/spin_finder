@@ -1,5 +1,4 @@
-<h1>Bikes#show</h1>
-<p>Find me in app/views/bikes/show.html.erb</p>
+
 
 <div class="container">
 
@@ -39,24 +38,18 @@
     <div class="inner d-flex">
       <div class="details p-3 m-3">
 
-        <h6 class="avail"><% a = "Bike is available" %></h6>
-        <h6 class="unavail"><% b = "Bike is unavailable" %>
+        <h6 style="color:green"><% a = "Bike is available" %>
+        <h6 style="color:red"><% b = "Bike is unavailable" %>
 
         <%= @bike.available == true ? a: b %>
-
-
-
-
         <h5>To hire: $<%= @bike.price.to_i  %></h5>
-
 
         <h5>Location:</h5>
         <%= @bike.location  %>
 
         <h5>Rating:</h5>
         <%= @bike.rating  %>
-
-      </div>
+    </div>
 
         <div class="description p-3 m-3">
           <h5>Description:</h5>
@@ -64,4 +57,15 @@
         </div>
     </div>
   </div>
+  #REVIEWS
+  <div class="reviews m-3">
+    <h3>Reviews</h3>
+    <% @bike.reviews.each do |review| %>
+      <h5>Content</h5>
+      <%= review.content %>
+      <h5>Rating</h5>
+      <%= review.rating %>
+    <% end %>
+  </div>
+
 </div>
