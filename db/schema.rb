@@ -39,14 +39,14 @@ ActiveRecord::Schema.define(version: 2021_02_02_025723) do
   create_table "bikes", force: :cascade do |t|
     t.float "price"
     t.string "name"
-    t.boolean "available"
+    t.boolean "available", default: true
     t.string "description"
     t.string "location"
     t.integer "rating"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "times_booked"
+    t.integer "times_booked", default: 0
     t.index ["user_id"], name: "index_bikes_on_user_id"
   end
 
@@ -63,11 +63,12 @@ ActiveRecord::Schema.define(version: 2021_02_02_025723) do
   end
 
   create_table "favourites", force: :cascade do |t|
-    t.bigint "bike_id", null: false
-    t.bigint "user_id", null: false
+    t.string "favorited_type"
+    t.bigint "favorited_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["bike_id"], name: "index_favourites_on_bike_id"
+    t.index ["favorited_type", "favorited_id"], name: "index_favourites_on_favorited_type_and_favorited_id"
     t.index ["user_id"], name: "index_favourites_on_user_id"
   end
 
@@ -102,7 +103,5 @@ ActiveRecord::Schema.define(version: 2021_02_02_025723) do
   add_foreign_key "bikes", "users"
   add_foreign_key "bookings", "bikes"
   add_foreign_key "bookings", "users"
-  add_foreign_key "favourites", "bikes"
-  add_foreign_key "favourites", "users"
   add_foreign_key "reviews", "bookings"
 end

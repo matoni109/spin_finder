@@ -8,8 +8,8 @@ puts "cleaning house :)"
 User.destroy_all
 Bike.destroy_all
 Booking.destroy_all
-Favourite.destroy_all
 Review.destroy_all
+Favourite.destroy_all
 # # Kills all Active storage items ##
 ActiveStorage::Attachment.all.each { |attachment| attachment.purge }
 
@@ -108,12 +108,20 @@ until book_fav == 10 do
       bike_id: Bike.pluck(:id).sample
     )
     # binding.pry
-    if make_me.bike.user.id != make_me.user.id # can't book your own bike
+    # if make_me.bike.user.id != make_me.user.id # can't book your own bike
+    #   make_me.save!
+    #   book_fav += 1
+    #   puts "made Booking # #{make_me.id}"
+    # else
+    #   puts "Booking didn't work out ..."
+    # end
+
+    if make_me.valid?
       make_me.save!
       book_fav += 1
       puts "made Booking # #{make_me.id}"
     else
-      puts "Booking didn't work out ..."
+      puts "Fav didn't work out ..."
     end
 
   end
@@ -139,7 +147,8 @@ until book_fav == 10 do
   count_fav = 0
   until count_fav == 10 do
       make_me = Favourite.new(
-        bike_id: Bike.pluck(:id).sample,
+        favorited_type: Bike,
+        favorited_id: Bike.pluck(:id).sample,
         user_id: User.pluck(:id).sample
       )
       if make_me.valid?
