@@ -11,3 +11,44 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+.carousel-item img {
+  height: 450px;
+  // background-size : contain;
+  background-size: cover;
+  background-position: center;
+}
+
+.name {
+  width:100%;
+}
+
+h3 {
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+
+.avail {
+  color: green;
+}
+
+.unavail {
+  color: red;
+}
+
+.inner {
+  width: 100%
+}
+
+.container {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+h3{
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+h5 {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
