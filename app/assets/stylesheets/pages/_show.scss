@@ -1,12 +1,21 @@
 .carousel-item img {
-  height: 450px;
+  height: 600px;
   // background-size : contain;
   background-size: cover;
   background-position: center;
+  border-radius:6px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+
+.carousel-inner:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background: rgba(0,0,0,0.4);
 }
 
 .carousel-inner {
   margin-top: 100px;
+  transition: 0.3s;
+  opacity: 1;
 }
 
 .name {
@@ -15,7 +24,7 @@
 
 h3 {
   text-align: center;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #a39f9f;
 }
 
 .avail {
@@ -31,6 +40,7 @@ h3 {
 }
 
 .container {
+  font-weight: 900;
   font-family: 'Open Sans Condensed', sans-serif;
 }
 
@@ -40,4 +50,34 @@ h3{
 
 h5 {
   font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.details {
+  position: sticky;
+  left:30px;
+  transition:0.3s;
+  top:50%;
+  width: 25%;
+  height: 20%;
+  padding:60px;
+  border-radius: 4px;
+  background-color: white;
+  border: 1px solid #c3c3c3;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+  color:black;
+    h5 {
+      padding: 8px;
+    }
+}
+
+.details:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.content {
+  // margin-left: 6%;
+}
+
+.reviews {
+  // margin-left: 10%;
 }
