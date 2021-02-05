@@ -13,9 +13,4 @@ class Bike < ApplicationRecord
   ## Images
   has_many_attached :images
 
-
-  ## Image methods
-  def cloudinary_imgs(key)
-    cl_image_tag(key, :height=>200, :quality=>"auto", :fetch_format=>:auto, :transformation => { :dpr => "auto", :responsive => true, :width => "auto", :crop => "scale", })
-  end
 end

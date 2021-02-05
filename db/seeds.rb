@@ -39,6 +39,24 @@ puts "-- Making Humans"
 
 end
 
+## User Standard User ##
+1.times do
+
+  file = File.open("./db/avatars/22.png")
+
+  make_me = User.create!(
+    first_name: "Standard",
+    last_name: "User",
+    bio: "I'm user a standard user, looking at a Dev..",
+    location: "Melbourne",
+    email: "user@gmail.com",
+    admin: false,
+    password: "123456"
+  )
+  make_me.avatar.attach(io: file, filename: "#{make_me.first_name}.png", content_type: 'image/png')
+  puts "made #{make_me.first_name} #{make_me.last_name}"
+
+end
 ## Make the Plebs ##
 count = 0
 
@@ -67,7 +85,7 @@ puts "--- Making Bikes Bro !!"
 ### Make some Bikes ###
 count = 0
 
-12.times do
+13.times do
   find_image = Dir.children("./db/bikes/")
   ## make the instance
 
@@ -129,7 +147,7 @@ until book_fav == 10 do
 
   puts "--- Making Reviews Start !"
 
-  10.times do
+  25.times do
     ## make the instance
     make_me = Review.create!(
       content: Faker::TvShows::GameOfThrones.quote,
