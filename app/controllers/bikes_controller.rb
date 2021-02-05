@@ -78,7 +78,7 @@ class BikesController < ApplicationController
     params.require(:bike).permit( :price, :rating, :name,  :description, :location, :user_id, images: [])
   end
 
-  def has_doses?
+  def has_reviews?
     @bike.review_ids.last = nil
     return '<%= link_to "Add Review", new_bike_review_path(@bike) , class: "btn card-link " %>'
   end
