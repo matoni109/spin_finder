@@ -1,13 +1,10 @@
 <div class="container mx-auto py-2">
-  <%= simple_form_for [ @bike ] do |f| %>
+    <%= simple_form_for [ @bike ] do |f| %>
     <%= f.input :name, placeholder: 'give your bike a funky name'  %>
     <%= f.input :description, as: :text, placeholder: 'what would your bike like to say ?' %>
     <%= f.input :price, placeholder: '$ Per Day', input_html: { min: '1' }  %>
     <%= f.input :location, label_html: { id: 'search' } %>
     <%=  f.input :images, as: :file, input_html: { multiple: true } %>
-    <% f.object.images.each do |image| %>
-      <%  span image_tag(image) %>
-    <% end %>
     <%= f.submit "Submit Bike", class: "btn btn-primary my-2" %>
-  <% end %>
+    <% end %>
 </div>

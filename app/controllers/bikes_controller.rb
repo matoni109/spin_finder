@@ -13,30 +13,49 @@ class BikesController < ApplicationController
 
   def new
     @bike = Bike.new
-    @user = current_user
+
     authorize @bike ## this is in set_rest
   end
 
   def create
-    # [...]
-    @bike = Bike.new(bike_params)
-    authorize @bike
 
+    # @bike.errors.full_messages
+    @user = current_user.id
+    @bike = Bike.new(bike_params)
+    @bike = Bike.update!(rating: 0)
+    @bike.images.attach(params[:bike][:images])
+
+    authorize @bike
 
     # raise
     if @bike.valid?
       @bike.save
     else
-      raise
       render :new
     end
     redirect_to bikes_path(@bike)
   end
 
-
+  def edit # need to remove images / change them
+    # gets set
+  end
 
   def update
+    # gets set
+    @user = current_user.id
+    @bike = Bike.new(bike_params)
+    # @bike = Bike.update!(rating: 0)
+    @bike.images.attach(params[:bike][:images])
 
+    authorize @bike
+
+    # raise
+    if @bike.valid?
+      @bike.save
+    else
+      render :new
+    end
+    redirect_to bikes_path(@bike)
 
   end
 
@@ -49,7 +68,7 @@ class BikesController < ApplicationController
   end
 
   def bike_params
-    params.require(:bike).permit(:price, :name, :images, :available, :description, :location  )
+    params.require(:bike).permit( :price, :rating, :name,  :description, :location, :user_id, images: [])
   end
 
 end

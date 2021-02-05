@@ -67,7 +67,7 @@ puts "--- Making Bikes Bro !!"
 ### Make some Bikes ###
 count = 0
 
-12.times do
+13.times do
   find_image = Dir.children("./db/bikes/")
   ## make the instance
 
@@ -129,7 +129,7 @@ until book_fav == 10 do
 
   puts "--- Making Reviews Start !"
 
-  10.times do
+  25.times do
     ## make the instance
     make_me = Review.create!(
       content: Faker::TvShows::GameOfThrones.quote,
