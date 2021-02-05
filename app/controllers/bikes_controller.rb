@@ -13,7 +13,7 @@ class BikesController < ApplicationController
 
   def new
     @bike = Bike.new
-
+    @user = current_user
     authorize @bike ## this is in set_rest
   end
 
@@ -21,7 +21,19 @@ class BikesController < ApplicationController
     # [...]
     @bike = Bike.new(bike_params)
     authorize @bike
+
+
+    # raise
+    if @bike.valid?
+      @bike.save
+    else
+      raise
+      render :new
+    end
+    redirect_to bikes_path(@bike)
   end
+
+
 
   def update
 
@@ -37,7 +49,7 @@ class BikesController < ApplicationController
   end
 
   def bike_params
-    params.require(:bike).permit(:price, :name, :available, :description, :location, :images )
+    params.require(:bike).permit(:price, :name, :images, :available, :description, :location  )
   end
 
 end
