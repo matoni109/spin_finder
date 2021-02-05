@@ -2,9 +2,10 @@ class BikesController < ApplicationController
 
   before_action :set_bike, only: [:show, :edit, :update, :destroy]
 
-
   def index
     @bikes = policy_scope(Bike).order(created_at: :desc)
+
+    ## maybe add a limit of 8 ?
   end
 
   def show
@@ -59,6 +60,12 @@ class BikesController < ApplicationController
 
   end
 
+  def destroy
+    # gets set
+    @Bike.destroy
+    # no need for app/views/Bikes/destroy.html.erb
+    redirect_to bikes_path
+  end
 
   private
 
@@ -69,6 +76,11 @@ class BikesController < ApplicationController
 
   def bike_params
     params.require(:bike).permit( :price, :rating, :name,  :description, :location, :user_id, images: [])
+  end
+
+  def has_doses?
+    @bike.review_ids.last = nil
+    return '<%= link_to "Add Review", new_bike_review_path(@bike) , class: "btn card-link " %>'
   end
 
 end
