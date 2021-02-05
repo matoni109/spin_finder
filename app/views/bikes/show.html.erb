@@ -29,13 +29,7 @@
     </a>
   </div>
 
-  <div class="row justify-content-center">
-
-    <div class="name">
-      <h3><%= @bike.name  %></h3>
-    </div>
-
-    <div class="inner d-flex">
+      <div class="inner">
       <div class="details p-3 m-3">
 
         <h6 style="color:green"><% a = "Bike is available" %>
@@ -51,21 +45,31 @@
         <%= @bike.rating  %>
     </div>
 
+  <div class="row justify-content-center">
+    <div class="content">
+    <div class="name">
+      <h3><%= @bike.name  %></h3>
+    </div>
         <div class="description p-3 m-3">
           <h5>Description:</h5>
           <%= @bike.description  %>
         </div>
-    </div>
-  </div>
-  #REVIEWS
+
   <div class="reviews m-3">
     <h3>Reviews</h3>
     <% @bike.reviews.each do |review| %>
-      <h5>Content</h5>
-      <%= review.content %>
-      <h5>Rating</h5>
-      <%= review.rating %>
+    <div class="single-review p-3 m-3">
+        <h5>Content</h5>
+        <%= review.content %>
+        <h5>Rating</h5>
+        <%= review.rating %>
+
+    </div>
     <% end %>
+    </div>
   </div>
+  </div>
+    </div>
+
 
 </div>
