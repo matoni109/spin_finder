@@ -22,7 +22,7 @@
   <% @user.bookings.each do |booking| %>
     <div class="col-lg-3 col-md-4 col-6 card-booking-category">
         <%= booking.till %>
-        <%= link_to 'Add a review', '#' %>
+        <%= link_to 'Add a review', new_booking_review_path(booking) %>
       </a>
     </div>
     <% end %>
