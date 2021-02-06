@@ -11,6 +11,7 @@ class ReviewsController < ApplicationController
     @review.booking = @booking
     @bike = @booking.bike
     authorize @bike
+
     if @review.save
       redirect_to bike_path(@bike)
     else
