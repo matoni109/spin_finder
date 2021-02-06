@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_total_price, only: [:create, :update]
   # def index
   #   @bookings = policy_scope(Bike).order(created_at: :desc)
 
@@ -75,4 +75,12 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit( :total_price, :from, :till, :user_id, :bike_id)
   end
+
+
+  def set_total_price
+    raise
+
+  end
+
+
 end
