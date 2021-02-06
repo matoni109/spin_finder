@@ -93,3 +93,4 @@ class BookingsController < ApplicationController
     @booking.update(total_price: total_price)
 
   end
+end
