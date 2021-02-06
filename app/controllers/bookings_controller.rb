@@ -21,10 +21,10 @@ class BookingsController < ApplicationController
   def create
 
     # @booking.errors.full_messages
-    @user = current_user.id
+    # @user = current_user.id
     @booking = Booking.new(booking_params)
-
-
+    @booking.bike = Bike.find(params[:bike_id])
+    @booking.user = current_user
     authorize @booking
 
     # raise
@@ -33,7 +33,7 @@ class BookingsController < ApplicationController
     else
       render :new
     end
-    redirect_to bookings_path(@booking)
+    redirect_to bike_path(@booking.bike)
   end
 
   def edit # need to remove images / change them
@@ -54,7 +54,7 @@ class BookingsController < ApplicationController
     else
       render :new
     end
-    redirect_to bookings_path(@booking)
+    redirect_to bike_path(@booking.bike)
 
   end
 
