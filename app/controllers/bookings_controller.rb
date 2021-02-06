@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
   end
 
   def create
-
+    @bike = Bike.find(params[:bike_id])
     # @booking.errors.full_messages
     # @user = current_user.id
     @booking = Booking.new(booking_params)
@@ -32,7 +32,7 @@ class BookingsController < ApplicationController
     # raise
     if @booking.valid?
       @booking.save
-      set_total_price(@booking.id)
+      set_total_price(@booking.id) ## call method
     else
       render :new
     end
@@ -46,6 +46,7 @@ class BookingsController < ApplicationController
   def update
     # gets set
     @user = current_user.id
+    @bike = Bike.find(params[:bike_id])
     @booking = Booking.new(booking_params)
     # @booking = booking.update!(rating: 0)
 
@@ -54,10 +55,11 @@ class BookingsController < ApplicationController
     # raise
     if @booking.valid?
       @booking.save
+      set_total_price(@booking.id) ## call method
+      redirect_to dashboard_path
     else
       render :new
     end
-    redirect_to dashboard_path
 
   end
 
