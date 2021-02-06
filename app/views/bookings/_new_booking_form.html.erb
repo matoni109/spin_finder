@@ -1,5 +1,5 @@
 <div class="container mx-auto py-2">
-  <%= simple_form_for [ @bike, @booking, @user ] do |f| %>
+  <%= simple_form_for [ @booking ] do |f| %>
     <%= f.input :total_price  %>
     <%= f.input :from, as: :datetime, html5: true %>
     <%= f.input :till, as: :datetime, html5: true  %>

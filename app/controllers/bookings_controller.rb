@@ -1,4 +1,77 @@
 class BookingsController < ApplicationController
-  def show
+  before_action :set_booking, only: [:show, :edit, :update, :destroy]
+
+  # def index
+  #   @bookings = policy_scope(Bike).order(created_at: :desc)
+
+  #   ## maybe add a limit of 8 ?
+  # end
+
+  # def show
+  #   ## set with :set_bike
+  # end
+
+  def new
+    @booking = Booking.new
+
+    authorize @booking ## this is in set_rest
+  end
+
+  def create
+
+    # @booking.errors.full_messages
+    @user = current_user.id
+    @booking = Booking.new(booking_params)
+
+
+    authorize @booking
+
+    # raise
+    if @booking.valid?
+      @booking.save
+    else
+      render :new
+    end
+    redirect_to bookings_path(@booking)
+  end
+
+  def edit # need to remove images / change them
+    # gets set
+  end
+
+  def update
+    # gets set
+    @user = current_user.id
+    @booking = Booking.new(booking_params)
+    # @booking = booking.update!(rating: 0)
+
+    authorize @booking
+
+    # raise
+    if @booking.valid?
+      @booking.save
+    else
+      render :new
+    end
+    redirect_to bookings_path(@booking)
+
+  end
+
+  def destroy
+    # gets set
+    @booking.destroy
+    # no need for app/views/bookings/destroy.html.erb
+    redirect_to bookings_path
+  end
+
+  private
+
+  def set_booking
+    @booking = booking.find(params[:id])
+    authorize @booking
+  end
+
+  def booking_params
+    params.require(:booking).permit( :total_price, :from, :till, :user_id, :bike_id)
   end
 end
