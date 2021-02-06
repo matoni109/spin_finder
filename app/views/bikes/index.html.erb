@@ -1,36 +1,30 @@
 <div class="container-main">
-  <!-- Map on the left -->
-  <div class="container-map">
-    <!-- Need to put map in here -->
-  </div>
-
-  <!-- Bikes on the right column -->
-  <div class="container-bikes">
-    <div class="container">
-      <div class="row">
-      <% @bikes.each do |bike| %>
-        <div class="col-lg-6 col-md-6 col-sm-12 py-1">
-          <div class="card card-bikes" style="width: 100%;">
-          <%= cl_image_tag(bike.images[0].key, :height=>250, :width=>350, :fetch_format=>:auto, :crop=>"fill", :class=>"card-i.namg-top img-fluid mx-auto rounded", :alt=>"#{bike.name}")%>
-            <div class="card-body">
-              <h5 class="card-title">
-              <%= bike.name %>
-              </h5>
-
-              <p class="card-text">
-              <i class="fas fa-dollar-sign"></i>
-              <%= bike.id %>
-              </p>
-
-              <%= link_to "More Info", bike_path(bike) , class: "btn btn-link" %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-      </div>
-
+    <!-- Map on the left -->
+    <div class="container-map">
+        <!-- Need to put map in here -->
     </div>
-
-  </div>
-
+    <!-- Bikes on the right column -->
+    <div class="container-bikes">
+        <div class="container">
+            <div class="row">
+                <% @bikes.each do |bike| %>
+                <div class="col-lg-6 col-md-6 col-sm-12 py-1">
+                    <div class="card card-bikes" style="width: 100%;">
+                        <%= cloudinary_imgs(bike.images[0].key,bike) %>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= bike.name %>
+                            </h5>
+                            <p class="card-text">
+                                <i class="fas fa-dollar-sign"></i>
+                                <%= bike.id %>
+                            </p>
+                            <%= link_to "More Info", bike_path(bike) , class: "btn btn-link" %>
+                        </div>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
 </div>
