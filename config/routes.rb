@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   # get 'bookings/show'
   # get 'bikes/index'
   # get 'bikes/show'
+  get '/dashboard', to: 'pages#dashboard'
 end
