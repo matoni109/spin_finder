@@ -1,6 +1,7 @@
+require 'date'
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
-
+  # after_action :set_total_price, only: [:create, :update]
   # def index
   #   @bookings = policy_scope(Bike).order(created_at: :desc)
 
@@ -27,13 +28,15 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     authorize @booking
 
+
     # raise
     if @booking.valid?
       @booking.save
+      set_total_price(@booking.id)
     else
       render :new
     end
-    redirect_to bike_path(@booking.bike)
+    redirect_to dashboard_path
   end
 
   def edit # need to remove images / change them
@@ -54,7 +57,7 @@ class BookingsController < ApplicationController
     else
       render :new
     end
-    redirect_to bike_path(@booking.bike)
+    redirect_to dashboard_path
 
   end
 
@@ -75,4 +78,23 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit( :total_price, :from, :till, :user_id, :bike_id)
   end
+
+
+  def set_total_price(id)
+    # raise
+    @booking = Booking.find(id)
+    @bike = Bike.find(params[:bike_id])
+    start_book = params[:booking][:from]
+    end_book = params[:booking][:till]
+    bike_id = params[:bike_id]
+
+    total_days = (Date.parse(end_book)- Date.parse(start_book)).to_i
+
+    total_price = total_days * @bike.price
+    @booking.update(total_price: total_price)
+
+  end
+
+
+
 end
