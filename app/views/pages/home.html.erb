@@ -7,7 +7,12 @@
     <div class="form-group">
     <input type="text" class="form-control home-search-bar" placeholder="E.g. Richmond, Victoria">
     </div>
-    <button type="submit" class="btn btn-primary">Search</button>
+
+    <!-- Search, Sign up, Login buttons -->
+    <button type="submit" class="btn btn-dark">Search</button>
+    <button class="btn btn-primary"><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></button>
+    <button class="btn btn-success"><%= link_to "Login", new_user_session_path, class: "nav-link" %></button>
+
     </form>
   </div>
 </div>
