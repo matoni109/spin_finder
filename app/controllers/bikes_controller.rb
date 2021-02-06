@@ -24,7 +24,7 @@ class BikesController < ApplicationController
     # @bike.errors.full_messages
     @user = current_user.id
     @bike = Bike.new(bike_params)
-    @bike.update(rating: 0)
+    @bike.update(rating: 0, user_id: @user)
     @bike.images.attach(params[:bike][:images])
 
     authorize @bike
@@ -33,10 +33,8 @@ class BikesController < ApplicationController
     if @bike.valid?
       @bike.save
       redirect_to bike_path(@bike)
-      raise
     else
       render :new
-      raise
     end
 
   end
