@@ -1,15 +1,12 @@
 <div class="container my-5">
-
-  <div class="row mx-auto my-3 justify-content-center">
-    <div class="col-6 mt-5">
-      <h2>Add a Review for</h2>
-    <%= simple_form_for([@booking, @review]) do |f| %>
-      <%= f.input :content %>
-      <%= f.input :rating %>
-      <%= f.submit %>
-    <% end %>
-
+    <div class="row mx-auto my-3 justify-content-center">
+        <div class="col-6 mt-5">
+            <h2>Add a Review for</h2>
+            <%= simple_form_for([@booking, @review]) do |f| %>
+            <%= f.input :content, placeholder: 'How was your ride ?', required: true  %>
+            <%= f.input :rating, placeholder: 'Score 1 - 5', input_html: { min: '1' }, required: true  %>
+            <%= f.submit %>
+            <% end %>
+        </div>
     </div>
-  </div>
 </div>
-
