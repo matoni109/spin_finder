@@ -1,7 +1,7 @@
 require 'date'
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
-  # after_action :set_total_price, only: [:create, :update]
+
   # def index
   #   @bookings = policy_scope(Bike).order(created_at: :desc)
 
@@ -79,7 +79,6 @@ class BookingsController < ApplicationController
     params.require(:booking).permit( :total_price, :from, :till, :user_id, :bike_id)
   end
 
-
   def set_total_price(id)
     # raise
     @booking = Booking.find(id)
@@ -94,7 +93,3 @@ class BookingsController < ApplicationController
     @booking.update(total_price: total_price)
 
   end
-
-
-
-end
