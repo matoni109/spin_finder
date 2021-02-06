@@ -1,5 +1,15 @@
 /* Navbar Styling */
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.collapse {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .navbar-custom {
   padding-top: 10px;
   padding-bottom: 10px;
