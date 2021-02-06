@@ -1,1 +1,30 @@
-<h1>Hahah hehehe</h1>
+<h2>Dashboard</h2>
+
+<div class="container">
+  <h3><%= @user.first_name%> <%= @user.last_name %></h3>
+  <div class="row text-center">
+    <p>Bio - <%= @user.bio %></p>
+  </div>
+</div>
+<!-- User's listed rentals -->
+<div class="container">
+  <h3>Bikes</h3>
+
+  <% @user.bikes.each do |bike| %>
+    <h4><%= bike.name %> - Total Price: $<%= bike.price %></h4>
+  <% end %>
+</div>
+
+<!-- User's upcoming rentals -->
+<div class="container my-5">
+<h3>Rentals</h3>
+<div class="row text-center text-lg-left">
+  <% @user.bookings.each do |booking| %>
+    <div class="col-lg-3 col-md-4 col-6 card-booking-category">
+        <%= booking.till %>
+        <%= link_to 'Add a review', '#' %>
+      </a>
+    </div>
+    <% end %>
+</div>
+</div>
