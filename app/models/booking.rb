@@ -1,5 +1,6 @@
 class Booking < ApplicationRecord
   validate :own_bike?, on: :create
+  ## before create
 
   belongs_to :user
   belongs_to :bike
