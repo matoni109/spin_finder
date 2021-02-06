@@ -36,26 +36,10 @@
 
 /* Bike Category Card Styling */
 
-.img__description {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  color: black;
-  visibility: hidden;
-  opacity: 0;
-}
-
-.img-fluid:hover .img__description {
-  visibility: visible;
-  opacity: 1;
-}
 
 .card-bike-category {
   .img-fluid:hover {
-    background: black;
-    opacity: 0;
+    background: rgba(0, 0, 0, 0.1);
     transition: .5s ease;
   }
 }
