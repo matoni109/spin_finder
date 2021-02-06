@@ -13,7 +13,7 @@
 }
 
 .carousel-inner {
-  margin-top: 100px;
+  margin-top: 75px;
   transition: 0.3s;
   opacity: 1;
 }
@@ -63,13 +63,17 @@ h5 {
 //   background-position: center;
 // }
 
+// .parent {
+//   position:relative;
+// }
+
 .details {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url(https://images.unsplash.com/photo-1565291395961-ec8c830a1227?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=668&q=80);
   background-size:cover;
   background-position: center;
-  position: sticky;
   left:30px;
   transition:0.3s;
+  position: sticky;
   top:50%;
   width: 25%;
   height: 20%;
@@ -88,10 +92,12 @@ h5 {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.content {
-  // margin-left: 6%;
-}
+// .content {
+//   // margin-left: 6%;
+//   position: relative;
+// }
 
-.reviews {
-  // margin-left: 10%;
-}
+// .reviews {
+//   // margin-left: 10%;
+//   position: relative;
+// }
