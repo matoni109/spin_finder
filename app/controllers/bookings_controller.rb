@@ -36,7 +36,7 @@ class BookingsController < ApplicationController
     else
       render :new
     end
-    redirect_to bike_path(@booking.bike)
+    redirect_to dashboard_path
   end
 
   def edit # need to remove images / change them
@@ -57,7 +57,7 @@ class BookingsController < ApplicationController
     else
       render :new
     end
-    redirect_to bike_path(@booking.bike)
+    redirect_to dashboard_path
 
   end
 
