@@ -10,6 +10,7 @@ class BikesController < ApplicationController
 
   def show
     ## set with :set_bike
+    @review = Review.new()
   end
 
   def new

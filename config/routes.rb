@@ -4,12 +4,13 @@ Rails.application.routes.draw do
   root to: 'pages#home' # landing page => bike show
 
   resources :bikes do
-    resources :reviews, only: [:new, :create, :destroy ]
-    resources :bookings, only: [:new, :create, :destroy ]
+    resources :bookings, only: [:new, :create ]
   end
 
-  resources :reviews, only: [ :show, :update ]
-  resources :bookings, only: [ :show, :update ]
+  resources :reviews, only: [ :show, :update, :destroy ]
+  resources :bookings, only: [ :show, :update, :destroy ] do
+    resources :reviews, only: [:new, :create ]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   #   get 'reviews/show'

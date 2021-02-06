@@ -1,7 +1,6 @@
-
-
 <div class="container font-weight-light">
 
+<!--CAROOUSEL -->
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -29,50 +28,62 @@
     </a>
   </div>
 
+
+
+<!--NAME -->
       <div class="inner">
     <div class="name m-3">
         <h3><strong><%= @bike.name  %></strong></h3>
     </div>
 
   <div class="row justify-content-center">
-      <div class="details p-3 m-3 text-center col-3">
 
 
-        <% if @bike.available == true %>
-          <h6 style = "color:green">Bike is available</h6>
-        <% else %>
-          <h6 style = "color:red">Bike is unavailable</h6>
-        <% end %>
-        <h5>To hire: $<%= @bike.price.to_i  %></h5>
-
-        <h5>Location:</h5>
-        <%= @bike.location  %>
-
-        <h5>Rating:</h5>
-        <h5> <%= @bike.rating  %> / 5 </h5>
-        <h4 class="btn btn-primary">Ride!</h4>
+<!-- CARD -->
+  <div class="details p-3 m-3 text-center col-3">
+    <div class="avail">
+      <% if @bike.available == true %>
+        <h6 style = "color:green">Bike is available</h6>
+      <% else %>
+        <h6 style = "color:red">Bike is unavailable</h6>
+      <% end %>
     </div>
+      <h5>$<%= @bike.price.to_i  %> per hour</h5>
 
+      <h5>Ride me in</h5>
+      <%= @bike.location  %>
+
+      <h5>Rating:</h5>
+      <h5> <%= @bike.rating %> / 5 </h5>
+      <h4 class="btn btn-primary">Ride!</h4>
+  </div>
+
+
+
+<!--DESCRIPTION-->
     <div class="content col-8 ">
-        <div class="description p-3 m-3">
+      <div class="description p-3 m-3">
           <h5><strong>The bike</strong></h5>
           <%= @bike.description  %>
-        </div>
+      </div>
 
-  <div class="reviews m-3">
-    <h3><strong>Reviews</strong></h3>
-    <% @bike.reviews.each do |review| %>
-    <div class="single-review p-3 m-3">
-        <h5>Content</h5>
-        <%= review.content %>
-        <h5>Rating</h5>
-        <h5><%= review.rating %> / 5</h5>
-    </div>
-    <% end %>
+
+<!-- REVIEWS -->
+    <div class="reviews m-3">
+      <h3><strong>Reviews</strong></h3>
+       <%= link_to "Add a review", new_booking_review_path(@bike), :class => "m-3 btn btn-primary" %>
+        <% @bike.reviews.each do |review| %>
+        <div class="single-review p-3 m-3">
+          <h5>Content</h5>
+          <%= review.content %>
+          <h5>Rating</h5>
+          <h5><%= review.rating %> / 5</h5>
+      </div>
+      <% end %>
+      </div>
+
+
+      </div>
     </div>
   </div>
-  </div>
-    </div>
-
-
 </div>
