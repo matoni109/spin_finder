@@ -13,7 +13,8 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
-
+    @user = current_user
+    @bike = Bike.find(params[:bike_id])
     authorize @booking ## this is in set_rest
   end
 
