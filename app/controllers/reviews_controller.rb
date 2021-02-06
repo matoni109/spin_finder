@@ -1,14 +1,16 @@
 class ReviewsController < ApplicationController
   def new
     @review = Review.new
-    @booking = Bike.find(params[:bike_id])
+    @booking = Booking.find(params[:booking_id])
     authorize @review
   end
 
   def create
     @review = Review.new(strong_params)
-    @booking = Booking.find(params[:bike_id])
+    @booking = Booking.find(params[:booking_id])
     @review.booking = @booking
+    @bike = @booking.bike
+    authorize @bike
     if @review.save
       redirect_to bike_path(@bike)
     else
