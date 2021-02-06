@@ -119,7 +119,7 @@ book_fav = 0
 until book_fav == 10 do
     ## make the instance
     make_me = Booking.new(
-      total_price: rand(25..85), ## TODO:: work out total price
+      # total_price: rand(25..85), ## TODO:: work out total price
       from: Time.now + (rand(10..20) * rand(30000..40000 )),
       till: Time.now + (rand(30..40) * rand(70000..90000 )),
       user_id: User.pluck(:id).sample,
