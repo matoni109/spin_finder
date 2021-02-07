@@ -1,12 +1,17 @@
 module ApplicationHelper
 
-  ## Image methods
+  ## Image methods bikes on index page with map
   def cloudinary_imgs(key,instance)
     cl_image_tag(key, :height=>250, :width=>350, :fetch_format=>:auto, :crop=>"fill", :class=>"card-i.namg-top img-fluid mx-auto rounded", :alt=>"#{instance.name}")
   end
 
+  ### on bikes show page
+  def cloudinary_imgs_cara(key,instance)
+    cl_image_tag(key, :quality=>"auto", :fetch_format=>:auto, :crop=>"fill", :class=>"d-block w-100 img-fluid", :alt=>"#{instance.name}")
+  end
+
   def cloudinary_avatar_nav(key)
-    cl_image_tag(key, :height=>250, :width=>350, :fetch_format=>:auto, :crop=>"fill", :class=>"avatar dropdown-toggle")
+    cl_image_tag(key, :height=>250, :width=>350, :fetch_format=>:auto, :crop=>"crop", :class=>"avatar dropdown-toggle")
   end
 
 end
