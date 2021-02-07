@@ -1,30 +1,93 @@
-<h2>Dashboard</h2>
 
-<div class="container">
-  <h3><%= @user.first_name%> <%= @user.last_name %></h3>
-  <div class="row text-center">
-    <p>Bio - <%= @user.bio %></p>
-  </div>
-</div>
-<!-- User's listed rentals -->
-<div class="container">
-  <h3>Bikes</h3>
-
-  <% @user.bikes.each do |bike| %>
-    <h4><%= bike.name %> - Total Price: $<%= bike.price %></h4>
-  <% end %>
-</div>
-
-<!-- User's upcoming rentals -->
-<div class="container my-5">
-<h3>Rentals</h3>
-<div class="row text-center text-lg-left">
-  <% @user.bookings.each do |booking| %>
-    <div class="col-lg-3 col-md-4 col-6 card-booking-category">
-        <%= booking.till %>
-        <%= link_to 'Add a review', new_booking_review_path(booking) %>
-      </a>
+  <!-- Top row -->
+  <div class="row d-flex justify-content-center p-3">
+    <!-- User info -->
+    <div class="grid-card col-md-12 d-flex align-items-center p-3 mb-4">
+      <%= image_tag current_user.avatar, class:"img-fluid ml-4", style: "height: 150px; width: 150px; border-radius: 50%;" %>
+      <div class="container">
+      <h4>
+        <%= @user.first_name %> <%= @user.last_name %>
+      </h4>
+      <p>
+        <%= @user.email %> <br>
+        <strong>Location</strong> - <%= @user.location %> <br>
+        Bio - <%= @user.bio %>
+      </p>
+      </div>
     </div>
-    <% end %>
+  </div>
+
+
+  <!-- Listing History -->
+  <div class="main bg-white px-5 pb-5">
+    <div class="row d-flex justify-content-center p-3">
+    <div class="grid-card col-md-12 d-flex align-items-center p-3 m-4">
+      <i class="fas fa-bicycle mr-4"></i>
+      <h4>Listing History</h4>
+    </div>
+  </div>
+
+    <ul class="cards">
+      <% @user.bikes.each do |bike| %>
+    <li class="cards_item">
+
+      <div class="card">
+        <!-- Card image -->
+        <div class="card_image"><%= image_tag bike.images[0], class:"img-fluid", style:"height: 500; width: 300;" %></div>
+
+        <!-- Card body -->
+        <div class="card_content">
+          <h4 class="card_title mb-3"><%= bike.name %></h4>
+          <p><i class="fas fa-dollar-sign"></i> <%= bike.price %></p> <hr>
+          <%= link_to "More Info", bike_path(bike), class:"mb-2 btn btn-outline-dark"%>
+        </div>
+      </div>
+      <% end %>
+    </li>
+  </ul>
 </div>
+
+  <!-- Rental History -->
+  <div class="main bg-white px-5 pb-5">
+    <div class="row d-flex justify-content-center p-3">
+    <div class="grid-card col-md-12 d-flex align-items-center p-3 m-4">
+      <i class="fas fa-list-alt mr-4"></i>
+      <h4>Rental History</h4>
+    </div>
+  </div>
+
+    <ul class="cards">
+      <% @user.bookings.each do |booking| %>
+    <li class="cards_item">
+
+      <div class="card">
+        <!-- Card image -->
+        <div class="card_image"><%= image_tag booking.bike.images[0], class:"img-fluid", style:"height: 500; width: 300;" %></div>
+
+        <!-- Card body -->
+        <div class="card_content">
+
+          <!-- Better looking 'from' date format -->
+          <% day = booking.from.to_a[3] %>
+          <% month = booking.from.to_a[4] %>
+          <% year = booking.from.to_a[5] %>
+
+          <!-- Better looking 'till' date format -->
+          <% day_to = booking.till.to_a[3] %>
+          <% month_to = booking.till.to_a[4] %>
+          <% year_to = booking.till.to_a[5] %>
+
+          <h4 class="card_title mb-3">Rented - <%= day %>/<%= month %>/<%= year %> - <%= month_to %>/<%= day_to %>/<%= year %></h4>
+
+
+          <!-- Avatar image and Review link -->
+          <%= image_tag booking.bike.user.avatar, class:"img-fluid mr-4", style: "height: 50px; width: 50px; border-radius: 50%;" %>
+            <%= link_to 'Add a review', new_booking_review_path(booking), class:"btn-sm btn-primary" %>
+        </div>
+
+      </div>
+
+      <% end %>
+    </li>
+  </ul>
 </div>
