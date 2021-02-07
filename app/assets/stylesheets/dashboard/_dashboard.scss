@@ -1,8 +1,6 @@
 .grid-card {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  border-radius: 4px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;  border-radius: 4px;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .fa-bicycle {
@@ -13,8 +11,7 @@
   font-size: 60px;
 }
 
-
-// New
+// Card sections
 
 .main{
   max-width: 1200px;
@@ -47,6 +44,11 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  transition: 300ms ease-in-out;
 }
 
 .card_content {
