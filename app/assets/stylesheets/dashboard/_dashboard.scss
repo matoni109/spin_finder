@@ -1,5 +1,49 @@
-.card-booking-category {
-  border: 1px solid grey;
+.grid-card {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius: 4px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.fa-bicycle {
+  font-size: 60px;
+}
+
+.fa-list-alt {
+  font-size: 60px;
+}
+
+
+
+.card-product {
+  height: 180px;
+  width: 30%;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
-  flex-direction: column;
+  padding-bottom: 0;
+}
+
+.card-product img {
+  margin: 0;
+  width: 40%;
+
+}
+
+.card-product h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-product p {
+  font-size: 18px;
+  line-height: 1;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product .card-product-infos {
+  padding: 16px;
 }
