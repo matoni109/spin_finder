@@ -14,5 +14,7 @@ module ApplicationHelper
     cl_image_tag(key, :height=>250, :width=>350, :fetch_format=>:auto, :crop=>"crop", :class=>"avatar dropdown-toggle")
   end
 
+
+
 end
 # %= image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
