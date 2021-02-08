@@ -1,0 +1,9 @@
+<div class="container">
+    <h3>
+        <%= bike.name %>
+    </h3>
+    <p>
+        <%= bike.address %>
+    </p>
+    <%= link_to cloudinary_imgs(bike.images[0].key,bike), bike_path(bike) %>
+</div>

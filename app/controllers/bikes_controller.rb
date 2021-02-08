@@ -6,6 +6,15 @@ class BikesController < ApplicationController
     @bikes = policy_scope(Bike).order(created_at: :desc)
 
     ## maybe add a limit of 8 ?
+    # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+    @markers = @bikes.geocoded.map do |bike|
+      {
+        lat: bike.latitude,
+        lng: bike.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { bike: bike }),
+        # image_url: cloudinary_imgs(bike.images[0].key,bike)
+      }
+    end
   end
 
   def show

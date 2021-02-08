@@ -2,6 +2,7 @@
     <!-- Map on the left -->
     <div class="container-map">
         <!-- Need to put map in here -->
+        <div id="map" style="width: 100%; height: 90vh;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
     <!-- Bikes on the right column -->
     <div class="container-bikes">

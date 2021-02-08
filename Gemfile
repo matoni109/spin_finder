@@ -22,20 +22,23 @@ gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'autoprefixer-rails'
-gem 'font-awesome-sass', '~> 5.12.0'
-gem 'simple_form'
-gem 'faker'
-gem 'pry-byebug'
-# Use Active Storage variant
-gem 'dotenv-rails', groups: [:development, :test]
+gem 'bootsnap', '>= 1.4.2', require: false
 gem 'cloudinary', '~> 1.16.0'
+gem 'devise'
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'faker'
+gem 'font-awesome-sass', '~> 5.12.0'
+gem 'geocoder'
+gem 'pry-byebug'
+gem 'pretender'
+gem 'pundit'
+gem 'simple_form'
+
+# Use Active Storage variant
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.2', require: false
-gem 'devise'
-gem 'pretender'
-gem 'pundit'
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
