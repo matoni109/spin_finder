@@ -6,6 +6,13 @@ class BikesController < ApplicationController
     @bikes = policy_scope(Bike).order(created_at: :desc)
 
     ## maybe add a limit of 8 ?
+    # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+    @markers = @bikes.geocoded.map do |bike|
+      {
+        lat: bike.latitude,
+        lng: bike.longitude
+      }
+    end
   end
 
   def show

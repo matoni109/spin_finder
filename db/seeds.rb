@@ -1,6 +1,28 @@
 require "open-uri"
 require  'json'
 
+address_arr = [
+  "189 Gertrude Street, Fitzroy",
+  "276 Brunswick Street, Fitzroy",
+  "325-329 Gore Street, Fitzroy",
+  "119 Rose Street, Fitzroy",
+  "93 Moor Street, Fitzroy",
+  "358 Brunswick Street, Fitzroy",
+  "14 Johnston Street Fitzroy 3065",
+  "270 King Street Melbourne 3000",
+  "451 Burke Road Glen Iris 3146",
+  "22 Ovens Street Brunswick 3056",
+  "16 Ballarat Street Yarraville 3013",
+  "33 Waverley Street Richmond 3121",
+  "7 Dove Place Richmond 3121",
+  "179 St Georges Road Fitzroy North 3068",
+  "119/121 Hawthorn Rd Caulfield North 3161",
+  "30 Railway Place Fairfield 3078",
+  "202 High Street Northcote 3070",
+  "585a Canning Street Carlton North 3054",
+  "59 Gertrude Street Fitzroy 3065"
+]
+
 puts "--- GAME  START ---"
 puts "---"
 puts "---"
@@ -94,7 +116,7 @@ count = 0
     name: Faker::Cannabis.strain,
     available: [true, false].sample,
     description: Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote,
-    location: ["Perth", "Melbourne", "Sydney", "Darwin", "Brisbane", "Byron Bay"].sample,
+    address: address_arr.sample,
     rating: rand(2..5),
     user_id: User.pluck(:id).sample
   )
