@@ -10,7 +10,9 @@ class BikesController < ApplicationController
     @markers = @bikes.geocoded.map do |bike|
       {
         lat: bike.latitude,
-        lng: bike.longitude
+        lng: bike.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { bike: bike }),
+        # image_url: cloudinary_imgs(bike.images[0].key,bike)
       }
     end
   end
