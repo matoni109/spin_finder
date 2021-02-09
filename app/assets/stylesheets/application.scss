@@ -8,6 +8,10 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+// Mapbox
+@import 'mapbox-gl/dist/mapbox-gl';
+// Mapbox searching
+@import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder';
 
 // Your CSS partials
 @import "components/index";
