@@ -1,15 +1,13 @@
 .carousel-item img {
   height: 600px;
-  // background-size : contain;
+  object-fit: cover;
   background-size: cover;
   background-position: center;
-  border-radius:6px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+  border-radius: 6px;
 }
 
 .carousel-inner:hover {
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  background: rgba(0,0,0,0.4);
+  border-radius: 6px;
 }
 
 .carousel-inner {
@@ -57,15 +55,6 @@ h5 {
   font-family: 'Open Sans Condensed', sans-serif;
 }
 
-// .bg-image {
-//   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)) url('https://images.unsplash.com/photo-1565291395961-ec8c830a1227?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=668&q=80');
-//   background-size: cover;
-//   background-position: center;
-// }
-
-// .parent {
-//   position:relative;
-// }
 
 .details {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url(https://images.unsplash.com/photo-1565291395961-ec8c830a1227?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=668&q=80);
@@ -89,7 +78,7 @@ h5 {
 }
 
 .details:hover {
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
 }
 
 // .content {

@@ -2,7 +2,7 @@
     <!-- Map on the left -->
     <div class="container-map">
         <!-- Need to put map in here -->
-        <div id="map" style="width: 100%; height: 90vh;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+        <div id="map" style="width: 100%; height: 100vh;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
     <!-- Bikes on the right column -->
     <div class="container-bikes">
@@ -16,11 +16,10 @@
                             <h5 class="card-title">
                                 <%= bike.name %>
                             </h5>
-                            <p class="card-text">
-                                <i class="fas fa-dollar-sign"></i>
-                                <%= bike.id %>
+                            <p class="card-text text-muted">
+                                $<%= bike.price %> / hour
                             </p>
-                            <%= link_to "More Info", bike_path(bike) , class: "btn btn-link" %>
+                            <%= link_to "More Info", bike_path(bike) , class: "btn btn-outline-info" %>
                         </div>
                     </div>
                 </div>
