@@ -1,8 +1,8 @@
 <div class="container mx-auto py-2">
     <%= simple_form_for [ @bike ] do |f| %>
-    <%= f.input :name, placeholder: 'give your bike a funky name', required: true  %>
-    <%= f.input :description, as: :text, placeholder: 'what would your bike like to say ?', required: true  %>
-    <%= f.input :price, placeholder: '$ Per Day', input_html: { min: '1' }, required: true   %>
+    <%= f.input :name, placeholder: 'Give your bike a funky name', required: true  %>
+    <%= f.input :description, as: :text, placeholder: 'Description of your bike', required: true  %>
+    <%= f.input :price, placeholder: 'Price per hour', input_html: { min: '1' }, required: true   %>
     <%= f.input :address, label_html: { id: 'search' }, required: true  %>
     <%=  f.input :images, as: :file, input_html: { multiple: true }, required: true  %>
     <%= f.submit "Submit Bike", class: "btn btn-primary my-2" %>
