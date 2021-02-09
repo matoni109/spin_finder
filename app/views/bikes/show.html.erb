@@ -1,5 +1,4 @@
 <div class="container font-weight-light">
-
     <!--CAROUSEL -->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -62,12 +61,11 @@
                     <h5><strong>Reviews</strong></h5>
                     <hr>
                     <% @bike.reviews.each do |review| %>
-                    <div class="single-review p-3 m-3">
-                        <h5>Content</h5>
-                        <%= review.content %>
+                    <div class="single-review">
+                        <h5>Comment</h5>
+                        <p> <%= review.content %> </p>
                         <h5>Rating</h5>
-                        <h5>
-                            <%= review.rating %> / 5</h5>
+                        <h5><%= review.rating.to_i %> / 5</h5>
                     </div>
                     <% end %>
                 </div>
