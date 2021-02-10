@@ -56,7 +56,7 @@ class BikesController < ApplicationController
     # raise
     if @bike.valid?
       @bike.save
-      redirect_to bike_path(@bike)
+      redirect_to dashboard_path
     else
       render :new
     end
@@ -79,7 +79,7 @@ class BikesController < ApplicationController
     # raise
     if @bike.valid?
       @bike.save
-      redirect_to bike_path(@bike)
+      redirect_to dashboard_path
     else
       render :new
     end
