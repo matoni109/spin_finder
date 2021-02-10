@@ -1,31 +1,36 @@
-<div class="container-main">
-    <!-- Map on the left -->
-
-    <div class="container-map">
+<div class="container-fluid">
+  <!--   start row  -->
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 border p-2 ">
+      <!-- Map on the left -->
+      <div class="container-map">
         <!-- Need to put map in here -->
         <div id="map" style="width: 100%; height: 100vh;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+      </div>
     </div>
     <!-- Bikes on the right column -->
-    <div class="container-bikes">
-        <div class="container">
-            <div class="row">
-                <% @bikes.each do |bike| %>
-                <div class="col-lg-6 col-md-6 col-sm-12 border p-2 ">
-                    <div class="card card-bikes" style="width: 100%;">
-                        <%= cloudinary_imgs(bike.images[0].key,bike) %>
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <%= bike.name %>
-                            </h5>
-                            <p class="card-text text-muted">
-                                $<%= bike.price %> / hour
-                            </p>
-                            <%= link_to "More Info", bike_path(bike) , class: "btn btn-outline-info" %>
-                        </div>
-                    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 border p-2 ">
+      <div class="container">
+        <div class="row">
+          <% @bikes.each do |bike| %>
+            <div class="col-md-6 border p-2 ">
+              <div class="card card-bikes" style="width: 100%;">
+                <%= cloudinary_imgs(bike.images[0].key,bike) %>
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <%= bike.name %>
+                  </h5>
+                  <p class="card-text text-muted">
+                    $
+                    <%= bike.price %> / hour
+                  </p>
+                  <%= link_to "More Info", bike_path(bike) , class: "btn btn-outline-info" %>
                 </div>
-                <% end %>
+              </div>
             </div>
+          <% end %>
         </div>
+      </div>
     </div>
+  </div>
 </div>

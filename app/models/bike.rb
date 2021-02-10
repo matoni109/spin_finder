@@ -11,6 +11,8 @@ class Bike < ApplicationRecord
   ## validations :
   validates :description, length: { maximum: 500, too_long: "%{count} characters is the maximum allowed" }
   validates :rating, numericality: { only_float: true }
+  validates :address, presence: true
+  validates :price, presence: true
   validates :times_booked, numericality: { only_integer: true }
   after_validation :geocode, if: :will_save_change_to_address?
   ## Images
