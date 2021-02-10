@@ -28,10 +28,12 @@ import "bootstrap";
 import 'mapbox-gl/dist/mapbox-gl.css';
 // internal imports
 import { initMapbox } from './init_mapbox';
+import { initAutocomplete } from './init_autocomplete';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
     // Call your functions here, e.g:
     initMapbox();
+    initAutocomplete();
 });

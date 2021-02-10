@@ -3,18 +3,33 @@ class BikesController < ApplicationController
   before_action :set_bike, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bikes = policy_scope(Bike).order(created_at: :desc)
+    ## params from HOME
+    if params.has_key?(:search) && params[:search][:query].present?
+      @results = Geocoder.search(params[:search][:query]).first.coordinates
+      ## find bikes NEAR the geo
+      ## @bikes is now ready to parse =>
+      @bikes = policy_scope(Bike).near(@results, 20)
+      # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+      @markers = @bikes.geocoded.map do |bike|
+        {
+          lat: bike.latitude,
+          lng: bike.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { bike: bike }),
+        }
+      end
 
-    ## maybe add a limit of 8 ?
-    # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
-    @markers = @bikes.geocoded.map do |bike|
-      {
-        lat: bike.latitude,
-        lng: bike.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { bike: bike }),
-        # image_url: cloudinary_imgs(bike.images[0].key,bike)
-      }
+    else
+      #
+      @bikes = policy_scope(Bike).order(created_at: :desc)
+      @markers = @bikes.geocoded.map do |bike|
+        {
+          lat: bike.latitude,
+          lng: bike.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { bike: bike }),
+        }
+      end
     end
+
   end
 
   def show
@@ -41,7 +56,7 @@ class BikesController < ApplicationController
     # raise
     if @bike.valid?
       @bike.save
-      redirect_to bike_path(@bike)
+      redirect_to dashboard_path
     else
       render :new
     end
@@ -64,7 +79,7 @@ class BikesController < ApplicationController
     # raise
     if @bike.valid?
       @bike.save
-      redirect_to bike_path(@bike)
+      redirect_to dashboard_path
     else
       render :new
     end
