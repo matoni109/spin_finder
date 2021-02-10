@@ -8,7 +8,7 @@ class BikesController < ApplicationController
       @results = Geocoder.search(params[:search][:query]).first.coordinates
       ## find bikes NEAR the geo
       ## @bikes is now ready to parse =>
-      @bikes = policy_scope(Bike).near(@results, 30)
+      @bikes = policy_scope(Bike).near(@results, 20)
       # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
       @markers = @bikes.geocoded.map do |bike|
         {
