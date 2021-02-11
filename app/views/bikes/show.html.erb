@@ -24,28 +24,29 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-
     <!--NAME -->
     <div class="inner">
         <div class="name m-3">
-            <h3><strong><%= @bike.name  %></strong></h3>
+            <h3><strong>
+                    <%= @bike.name  %></strong></h3>
         </div>
         <div class="row justify-content-center parent">
             <!-- CARD -->
             <div class="details sticky p-3 m-3 text-center col-3">
-              <div class="avail">
-                <% if @bike.available == true %>
-                <h6 style="color:green">Bike is available</h6>
-                <% else %>
-                <h6 style="color:red">Bike is unavailable</h6>
-                <% end %>
-              </div>
-              <h5>
-                  $<%= @bike.price.to_i %> / hour</h5>
-              <h5>Find me at</h5>
-              <%= @bike.address  %>
-              <h5>Rating:</h5>
-              <h5>
+                <div class="avail">
+                    <% if @bike.available == true %>
+                    <h6 style="color:green">Bike is available</h6>
+                    <% else %>
+                    <h6 style="color:red">Bike is unavailable</h6>
+                    <% end %>
+                </div>
+                <h5>
+                    $
+                    <%= @bike.price.to_i %> / hour</h5>
+                <h5>Find me at</h5>
+                <%= @bike.address  %>
+                <h5>Rating:</h5>
+                <h5>
                     <%= @bike.rating %> / 5 </h5>
                 <%= link_to "Ride!", new_bike_booking_path(@bike), :class => "m-3 btn btn-primary" %>
             </div>
@@ -56,6 +57,18 @@
                     <hr>
                     <%= @bike.description  %>
                 </div>
+                <!--       Booking Form -->
+                <div class="description p-3 m-3" id='bike-booking-dates' data-unavailable="<%= @bike.unavailable_dates.to_json %>">
+                    <% if current_user.id != @bike.user_id  %>
+                    <h5><strong>Book
+                            <%= @bike.name  %></strong></h5>
+                    <%= simple_form_for([@bike, @booking]) do |f| %>
+                    <%= f.input :from, as: :string, type: :text %>
+                    <%= f.input :till, as: :string, type: :text %>
+                    <%= f.submit "Book", class: "btn btn-primary" %>
+                    <% end %>
+                    <% end %>
+                </div>
                 <!-- REVIEWS -->
                 <div class="reviews p-3 m-3">
                     <h5><strong>Reviews</strong></h5>
@@ -63,9 +76,12 @@
                     <% @bike.reviews.each do |review| %>
                     <div class="single-review">
                         <h5>Comment</h5>
-                        <p> <%= review.content %> </p>
+                        <p>
+                            <%= review.content %>
+                        </p>
                         <h5>Rating</h5>
-                        <h5><%= review.rating.to_i %> / 5</h5>
+                        <h5>
+                            <%= review.rating.to_i %> / 5</h5>
                     </div>
                     <% end %>
                 </div>
