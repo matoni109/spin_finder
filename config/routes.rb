@@ -8,9 +8,12 @@ Rails.application.routes.draw do
   end
 
   resources :reviews, only: [ :show, :update, :destroy ]
-  resources :bookings, only: [ :show, :update, :destroy ] do
+  resources :bookings, only: [ :show, :update, :destroy, :edit ] do
     resources :reviews, only: [:new, :create ]
   end
+
+  post 'bookings/:id/accept', to: 'bookings#accept', as: :accept_booking
+  post 'bookings/:id/deny', to: 'bookings#deny', as: :deny_booking
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   #   get 'reviews/show'

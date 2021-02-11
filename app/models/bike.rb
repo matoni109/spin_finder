@@ -18,4 +18,10 @@ class Bike < ApplicationRecord
   ## Images
   has_many_attached :images
 
+  def unavailable_dates
+    bookings.pluck(:from, :till).map do |range|
+      { from: range[0], to: range[1] }
+    end
+  end
+
 end

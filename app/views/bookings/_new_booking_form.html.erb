@@ -1,5 +1,12 @@
-<%= simple_form_for [@bike, @booking ] do |f| %>
-  <%= f.input :from, as: :date, html5: true %>
-  <%= f.input :till, as: :date, html5: true  %>
-  <%= f.submit "Confirm Rental", class: "btn btn-primary my-2" %>
-<% end %>
+<div id='bike-booking-dates' data-unavailable="<%= @bike.unavailable_dates.to_json %>">
+    <%= simple_form_for([@bike, @booking]) do |f| %>
+    <%= f.input :from, as: :string, type: :text %>
+    <%= f.input :till, as: :string, type: :text %>
+    <%= f.submit "Book", class: "btn btn-primary" %>
+    <% end %>
+</div>
+<!--  <%= simple_form_for [@bike, @booking ] do |f| %>
+<%= f.input :from, as: :date, html5: true %>
+<%= f.input :till, as: :date, html5: true  %>
+<%= f.submit "Confirm Rental", class: "btn btn-primary my-2" %>
+<% end %> -->

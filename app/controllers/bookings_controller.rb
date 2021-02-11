@@ -1,6 +1,6 @@
 require 'date'
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  before_action :set_booking, only: [:show, :edit, :destroy, :accept, :deny]
 
   # def index
   #   @bookings = policy_scope(Bike).order(created_at: :desc)
@@ -33,10 +33,12 @@ class BookingsController < ApplicationController
     if @booking.valid?
       @booking.save
       set_total_price(@booking.id) ## call method
+      redirect_to dashboard_path
     else
+      flash[:alert] = @booking.errors.full_messages.to_sentence
       render :new
     end
-    redirect_to dashboard_path
+
   end
 
   def edit # need to remove images / change them
@@ -44,17 +46,18 @@ class BookingsController < ApplicationController
   end
 
   def update
-    # gets set
-    @user = current_user.id
-    @bike = Bike.find(params[:bike_id])
-    @booking = Booking.new(booking_params)
-    # @booking = booking.update!(rating: 0)
+    @booking = Booking.find(params[:id])
+    @bike = @booking.bike_id
+    @booking.user = current_user
+    # @booking.errors.full_messages
+    # @user = current_user.id
 
+    # @booking.bike = Bike.find(params[:bike_id])
     authorize @booking
 
-    # raise
+
     if @booking.valid?
-      @booking.save
+      @booking.update(till: params["booking"][:till], from: params["booking"][:from])
       set_total_price(@booking.id) ## call method
       redirect_to dashboard_path
     else
@@ -67,13 +70,22 @@ class BookingsController < ApplicationController
     # gets set
     @booking.destroy
     # no need for app/views/bookings/destroy.html.erb
-    redirect_to bookings_path
+    redirect_to dashboard_path
+  end
+
+  def accept
+    @booking.update(status: "Approved")
+  end
+
+
+  def deny
+    @booking.update(status: "Denied")
   end
 
   private
 
   def set_booking
-    @booking = booking.find(params[:id])
+    @booking = Booking.find(params[:id])
     authorize @booking
   end
 
@@ -84,15 +96,12 @@ class BookingsController < ApplicationController
   def set_total_price(id)
     # raise
     @booking = Booking.find(id)
-    @bike = Bike.find(params[:bike_id])
     start_book = params[:booking][:from]
     end_book = params[:booking][:till]
-    bike_id = params[:bike_id]
 
     total_days = (Date.parse(end_book)- Date.parse(start_book)).to_i
 
-    total_price = total_days * @bike.price
+    total_price = total_days * @booking.bike.price
     @booking.update(total_price: total_price)
-
   end
 end

@@ -39,11 +39,41 @@
               </div>
           </div>
 
+      <!-- Display your own pending bookings -->
+        <!-- Display current status -->
+
+      <!-- Display bookings someone has made on your bikes -->
+        <!-- Needs Accept/Reject button -->
+
+
+      <div class="py-4 px-4">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <h5 class="mb-1">Approve/Deny Bookings</h5>
+        </div>
+
+        <% @user.bikes.each do |bike| %>
+        <div class="p-4 mb-3 rounded shadow-sm bg-light">
+        <% bike.bookings.each do |booking| %>
+        <div class="status-row border-bottom mb-2 d-flex justify-content-between">
+          <h5>Status </h5>
+          <% if booking.status == "Approved" %>
+            <h4><i class="fas fa-check-circle"></i></h4>
+          <% else %>
+             <h4><i class="fas fa-times-circle"></i></h4>
+          <% end %>
+        </div>
+          <p> <i class="fas fa-clock"></i> Expires: <%= booking.till.strftime("%d/%-m/%Y") %></p>
+          <%= link_to "Approve", accept_booking_path(booking), method: :post, :class => 'btn-sm btn-success p-2'%>
+          <%= link_to "Deny", deny_booking_path(booking), method: :post, :class => 'btn-sm btn-danger p-2'%>
+          <% end %>
+        </div>
+        <% end %>
+
       <!-- Listings -->
 
       <div class="py-4 px-4">
           <div class="d-flex align-items-center justify-content-between mb-3">
-            <h5 class="mb-0">Recent Listings</h5><a href="#" class="btn btn-link text-muted">Show all</a>
+            <h5 class="mb-0">Your Bikes</h5><a href="#" class="btn btn-link text-muted">Show all</a>
           </div>
           <ul class="cards">
           <% @user.bikes.each do |bike| %>
@@ -59,7 +89,13 @@
                   <h4 class="card_title mb-3"> <%= bike.name %> </h4>
                   <p><i class="fas fa-dollar-sign"></i> <%= bike.price %> </p>
                   <hr>
-                  <%= link_to "More Info", bike_path(bike), class:"mb-2 btn btn-outline-dark"%>
+
+                  <div class="d-flex justify-content-end">
+                  <%= link_to "", bike_path(bike), class:"mb-2 mr-1 p-2 btn btn-outline-primary fas fa-info-circle"%>
+                  <%= link_to "", bike_path(bike), class: "mb-2 mr-1 p-2 btn btn-outline-danger fas fa-trash-alt", method: :delete, data: { confirm: "Are you sure?" } %>
+                  <%= link_to "", edit_bike_path(bike), class:"mb-2 p-2 btn btn-outline-warning fas fa-pencil-alt", method: :patch %>
+                  </div>
+
                 </div>
               </div>
           <% end %>
@@ -72,7 +108,7 @@
 
       <div class="py-4 px-4">
           <div class="d-flex align-items-center justify-content-between mb-3">
-            <h5 class="mb-0">Recent Rentals</h5><a href="#" class="btn btn-link text-muted">Show all</a>
+            <h5 class="mb-0">Your Rentals</h5><a href="#" class="btn btn-link text-muted">Show all</a>
           </div>
           <ul class="cards">
           <% @user.bookings.each do |booking| %>
@@ -88,9 +124,19 @@
                       <%= booking.from.strftime("%d/%-m/%Y") %> -
                       <%= booking.till.strftime("%d/%-m/%Y") %>
                   </h4>
+
                   <!-- Avatar image and Review link -->
-                  <%= image_tag booking.bike.user.avatar, class:"img-fluid mr-4", style: "height: 50px; width: 50px; border-radius: 50%;" %>
-                  <%= link_to 'Add a review', new_booking_review_path(booking), class:"btn-sm btn-primary" %>
+
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <%= image_tag booking.bike.user.avatar, class:"img-fluid mr-4", style: "height: 50px; width: 50px; border-radius: 50%;" %>
+                    </div>
+                    <div class='text-center py-3'>
+                      <%= link_to '', new_booking_review_path(booking), class:"p-2 btn btn-outline-primary far fa-thumbs-up" %>
+                      <%= link_to "", booking_path(booking), class: "p-2 btn btn-outline-danger fas fa-trash-alt", data: { confirm: "Are you sure?" } %>
+                      <%= link_to "", edit_booking_path(booking), class:"p-2 btn btn-outline-warning fas fa-pencil-alt" %>
+                    </div>
+                  </div>
               </div>
             </div>
           <% end %>
