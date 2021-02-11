@@ -9,7 +9,7 @@ class Booking < ApplicationRecord
   ## TODO User can not book his own bike
 
   def own_bike?
-    if bike.user.id == user_id
+    if @bike.user_id == user_id
       errors.add(:bike, "can't be your own bike")
     end
   end
