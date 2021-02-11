@@ -1,7 +1,41 @@
 // Specific CSS for your home-page
-
-// Footer
-
-.footer {
-  color: white;
+.card-overlay {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  opacity: 0;
+  padding: 5px;
+  border-radius: 10px;
+  transition: .5s ease;
+  background-color: #586F7C;color:#fff;
+    a {
+    text-decoration: none;
+    opacity: 1;
+    border-radius: 12px;
+  }
 }
+
+.card-overlay:hover {
+  opacity: 0.9;
+}
+
+.card-bike-category {
+  position: relative;
+  padding: 0;
+  height: 200px;
+  .img-fluid {
+    height: 100%;
+  }
+}
+
+

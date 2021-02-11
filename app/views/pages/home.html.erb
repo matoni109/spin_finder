@@ -2,77 +2,42 @@
 <div class="container-fluid header d-flex">
     <div class="page-header d-flex">
         <h1>Search for places to ride a <span>bike.</span></h1>
-        <!--  <form class="navbar-form" role="search">
-    <div class="form-group">
-    <input type="text" class="form-control home-search-bar" placeholder="E.g. Richmond, Victoria">
-    </div> -->
         <%= simple_form_for :search, url: bikes_path, method: :get do |f| %>
         <div class="search-form-control form-group">
             <input class="form-control string required" placeholder="E.g. Richmond, Victoria" type="text" name="search[query]" id="search_query" />
-            <button name="button" type="submit" class="btn btn-flat">
-                <i class="fas fa-search"></i> Show Me Bikes</button>
+            <button name="button" type="submit" class="btn btn-dark mt-3">
+                <i class="fas fa-search"></i> Search</button>
         </div>
         <% end %>
-        <!-- Search, Sign up, Login buttons -->
-        <!-- <button type="submit" class="btn btn-dark">Search</button> -->
-        </form>
     </div>
 </div>
-<!-- Image grid for popular categories of bikes -->
-<div class="container my-5">
-    <h3 class="font-weight-light text-center text-lg-left mt-4 mb-0">Popular Categories</h3>
-    <div class="row text-center text-lg-left">
-        <!-- Road Bike -->
-        <div class="col-lg-3 col-md-4 col-6 card-bike-category">
-            <a href="#" class="d-block mb-4 h-100">
-                <img class="img-fluid" src="https://source.unsplash.com/HPpj2190tGs/400x300" alt="Road Bike">
-            </a>
+
+<!-- Need to iterate through User Bike images (limit 8) -->
+
+
+<!-- Image grid for popular bikes -->
+<div class="container container-popular-bikes my-5">
+    <h3 class="font-weight-light text-center text-lg-left mt-4 mb-0">Popular Bikes</h3>
+    <div class="row">
+    <% @bikes.take(8).each do |bike| %>
+        <div class="col-lg-3 col-md-4 col-6 card-bike-category p-1">
+          <div class="card-overlay p-1">
+            <p><%= bike.name %></p>
+            <p>$<%= bike.price %> / hour </p>
+            <%= link_to 'View', bike_path(bike), class:"btn-block btn-dark p-2 w-50 text-center" %>
+          </div>
+          <%= image_tag bike.images[0], class:"img-fluid w-100" %>
         </div>
-        <!-- Mountain Bike -->
-        <div class="col-lg-3 col-md-4 col-6 card-bike-category">
-            <a href="#" class="d-block mb-4 h-100">
-                <img class="img-fluid" src="https://source.unsplash.com/YOphb-Xr2sk/400x300" alt="Mountain Bike">
-            </a>
-        </div>
-        <!-- Commuter Bike -->
-        <div class="col-lg-3 col-md-4 col-6 card-bike-category">
-            <a href="#" class="d-block mb-4 h-100">
-                <img class="img-fluid" src="https://source.unsplash.com/WyoD7dui5WI/400x300" alt="Commuter Bike">
-            </a>
-        </div>
-        <!-- Gravel Bike -->
-        <div class="col-lg-3 col-md-4 col-6 card-bike-category">
-            <a href="#" class="d-block mb-4 h-100">
-                <img class="img-fluid" src="https://source.unsplash.com/FafiIrfd-Vw/400x300" alt="Gravel Bike">
-            </a>
-        </div>
-        <!-- Electric Bike -->
-        <div class="col-lg-3 col-md-4 col-6 card-bike-category">
-            <a href="#" class="d-block mb-4 h-100">
-                <img class="img-fluid" src="https://source.unsplash.com/qZ1KmFjfQq8/400x300" alt="Electric Bike">
-            </a>
-        </div>
-        <!-- Fat Bike -->
-        <div class="col-lg-3 col-md-4 col-6 card-bike-category">
-            <a href="#" class="d-block mb-4 h-100">
-                <img class="img-fluid" src="https://source.unsplash.com/vBC6hHHW6r8/400x300" alt="Fat Bike">
-            </a>
-        </div>
-        <!-- Fixed Gear Bike -->
-        <div class="col-lg-3 col-md-4 col-6 card-bike-category">
-            <a href="#" class="d-block mb-4 h-100">
-                <img class="img-fluid" src="https://source.unsplash.com/jpgJSBQtw5U/400x300" alt="Fixed Gear Bike">
-            </a>
-        </div>
-        <!-- BMX Bike -->
-        <div class="col-lg-3 col-md-4 col-6 card-bike-category">
-            <a href="#" class="d-block mb-4 h-100">
-                <img class="img-fluid" src="https://source.unsplash.com/Z6Fi-a4zizc/400x300" alt="BMX bike">
-            </a>
-        </div>
+        <% end %>
     </div>
 </div>
+
+<!-- Scrolling JS Map of good cycling spots in each city -->
+<!-- Turn each card into a link to a new view -->
+
 <!-- Destination Section -->
+
+
 <section class="card-large-destination">
     <div class="container">
         <h3 class="font-weight-light text-center text-lg-left mt-4 mb-0">Great Destinations</h3>
