@@ -29,6 +29,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 // internal imports
 import { initMapbox } from './init_mapbox';
 import { initAutocomplete } from './init_autocomplete';
+import { initFlatPicker } from './init_flatpickr';
 import flatpickr from "flatpickr";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -37,5 +38,5 @@ document.addEventListener('turbolinks:load', () => {
     // Call your functions here, e.g:
     initMapbox();
     initAutocomplete();
-    flatpickr();
+    initFlatPicker();
 });
