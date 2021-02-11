@@ -1,7 +1,45 @@
 // Specific CSS for your home-page
 
-// Footer
+.card-overlay {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  opacity: 0;
+  padding: 9px;
+  border-radius: 4px;
+  transition: .5s ease;
+  background: #8797B2;
 
-.footer {
   color: white;
+  font-family: 'Montserrat', 'open-sans';
+  font-weight: 700;
+    a {
+    text-decoration: none;
+    border-radius: 12px;
+  }
 }
+
+.card-overlay:hover {
+  opacity: 0.9;
+}
+
+
+.card-bike-category {
+  position: relative;
+  height: 200px;
+  .img-fluid {
+    height: 100%;
+  }
+}
+
+

@@ -1,7 +1,7 @@
-<div class="container-fluid">
+<div class="container-fluid m-0 p-0">
   <!--   start row  -->
-  <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 border p-2 ">
+  <div class="row p-0 m-0">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-0 m-0 ">
       <!-- Map on the left -->
       <div class="container-map">
         <!-- Need to put map in here -->
@@ -9,12 +9,12 @@
       </div>
     </div>
     <!-- Bikes on the right column -->
-    <div class="col-lg-6 col-md-6 col-sm-12 border p-2 ">
-      <div class="container">
-        <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-2 ">
+      <div class="container-bikes">
+        <div class="row m-0">
           <% @bikes.each do |bike| %>
             <div class="col-md-6 border p-2 ">
-              <div class="card card-bikes" style="width: 100%;">
+              <div class="card card-bikes">
                 <%= cloudinary_imgs(bike.images[0].key,bike) %>
                 <div class="card-body">
                   <h5 class="card-title">

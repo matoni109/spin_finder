@@ -3,37 +3,35 @@ class BikesController < ApplicationController
   before_action :set_bike, only: [:show, :edit, :update, :destroy]
 
   def index
-    ## params from HOME
+    # params from HOME
     if params.has_key?(:search) && params[:search][:query].present?
       @results = Geocoder.search(params[:search][:query]).first.coordinates
-      ## find bikes NEAR the geo
-      ## @bikes is now ready to parse =>
+      # find bikes NEAR the geo
+      # @bikes is now ready to parse =>
       @bikes = policy_scope(Bike).near(@results, 20)
       # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
       @markers = @bikes.geocoded.map do |bike|
         {
           lat: bike.latitude,
           lng: bike.longitude,
-          infoWindow: render_to_string(partial: "info_window", locals: { bike: bike }),
+          infoWindow: render_to_string(partial: "info_window", locals: { bike: bike })
         }
       end
 
     else
-      #
       @bikes = policy_scope(Bike).order(created_at: :desc)
       @markers = @bikes.geocoded.map do |bike|
         {
           lat: bike.latitude,
           lng: bike.longitude,
-          infoWindow: render_to_string(partial: "info_window", locals: { bike: bike }),
+          infoWindow: render_to_string(partial: "info_window", locals: { bike: bike })
         }
       end
     end
-
   end
 
   def show
-    ## set with :set_bike
+    # set with :set_bike
     @review = Review.new()
   end
 
@@ -44,7 +42,6 @@ class BikesController < ApplicationController
   end
 
   def create
-
     # @bike.errors.full_messages
     @user = current_user.id
     @bike = Bike.new(bike_params)
@@ -60,7 +57,6 @@ class BikesController < ApplicationController
     else
       render :new
     end
-
   end
 
   def edit # need to remove images / change them
@@ -83,8 +79,6 @@ class BikesController < ApplicationController
     else
       render :new
     end
-
-
   end
 
   def destroy
@@ -109,5 +103,4 @@ class BikesController < ApplicationController
     @bike.review_ids.last = nil
     return '<%= link_to "Add Review", new_bike_review_path(@bike) , class: "btn card-link " %>'
   end
-
 end
