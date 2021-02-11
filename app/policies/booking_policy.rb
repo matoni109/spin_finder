@@ -22,6 +22,14 @@ class BookingPolicy < ApplicationPolicy
     return true
   end
 
+  def accept?
+    return true
+  end
+
+  def deny?
+    return true
+  end
+
   # # Edit calls update ? in App Policy
   # def edit?
   #   # if user is own true otherwise false

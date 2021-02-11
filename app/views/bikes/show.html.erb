@@ -33,21 +33,21 @@
         <div class="row justify-content-center parent">
             <!-- CARD -->
             <div class="details sticky p-3 m-3 text-center col-3">
-                <div class="avail">
-                    <% if @bike.available == true %>
-                    <h6 style="color:green">Bike is available</h6>
-                    <% else %>
-                    <h6 style="color:red">Bike is unavailable</h6>
-                    <% end %>
-                </div>
-                <h5>
-                    $
-                    <%= @bike.price.to_i %> / hour</h5>
-                <h5>Find me at</h5>
-                <%= @bike.address  %>
-                <h5>Rating:</h5>
-                <h5>
-                    <%= @bike.rating %> / 5 </h5>
+              <div class="avail">
+                <% if @bike.available == true %>
+                <h6 style="color:green">Bike is available</h6>
+                <% else %>
+                <h6 style="color:red">Bike is unavailable</h6>
+                <% end %>
+              </div>
+              <h5>
+                  $<%= @bike.price.to_i %> / hour</h5>
+              <h5>Find me at</h5>
+              <%= @bike.address  %>
+              <h5>Rating:</h5>
+              <h5>
+                <%= @bike.rating %> / 5 </h5>
+
                 <%= link_to "Ride!", new_bike_booking_path(@bike), :class => "m-3 btn btn-primary" %>
             </div>
             <!--DESCRIPTION-->

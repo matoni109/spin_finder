@@ -1,6 +1,6 @@
 require 'date'
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :edit, :destroy]
+  before_action :set_booking, only: [:show, :edit, :destroy, :accept, :deny]
 
   # def index
   #   @bookings = policy_scope(Bike).order(created_at: :desc)
@@ -73,6 +73,15 @@ class BookingsController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def accept
+    @booking.update(status: "Approved")
+  end
+
+
+  def deny
+    @booking.update(status: "Denied")
+  end
+
   private
 
   def set_booking
@@ -87,7 +96,6 @@ class BookingsController < ApplicationController
   def set_total_price(id)
     # raise
     @booking = Booking.find(id)
-    # @bike = @booking.bike_id
     start_book = params[:booking][:from]
     end_book = params[:booking][:till]
 
@@ -95,6 +103,5 @@ class BookingsController < ApplicationController
 
     total_price = total_days * @booking.bike.price
     @booking.update(total_price: total_price)
-
   end
 end
