@@ -32,6 +32,8 @@ class BikesController < ApplicationController
 
   def show
     # set with :set_bike
+    @booking = Booking.new
+    @user = current_user
     @review = Review.new()
   end
 
@@ -66,15 +68,12 @@ class BikesController < ApplicationController
   def update
     # gets set
     @user = current_user.id
-    @bike = Bike.new(bike_params)
+    # @bike = Bike.new(bike_params)
     # @bike = Bike.update!(rating: 0)
-    @bike.images.attach(params[:bike][:images])
-
+    # @bike.images.attach(params[:bike][:images])
     authorize @bike
-
-    # raise
     if @bike.valid?
-      @bike.save
+      @bike.update(bike_params)
       redirect_to dashboard_path
     else
       render :new
@@ -83,9 +82,9 @@ class BikesController < ApplicationController
 
   def destroy
     # gets set
-    @Bike.destroy
+    @bike.destroy
     # no need for app/views/Bikes/destroy.html.erb
-    redirect_to bikes_path
+    redirect_to dashboard_path
   end
 
   private
