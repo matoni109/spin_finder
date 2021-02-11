@@ -38,64 +38,64 @@
               </div>
           </div>
 
-          <!-- Listings -->
+      <!-- Listings -->
 
-            <div class="py-4 px-4">
-                <div class="d-flex align-items-center justify-content-between mb-3">
-                  <h5 class="mb-0">Recent Listings</h5><a href="#" class="btn btn-link text-muted">Show all</a>
-                </div>
-                <ul class="cards">
-                <% @user.bikes.each do |bike| %>
-                  <li class="cards_item">
-                    <!-- Listing Card -->
-                    <div class="card">
-                      <!-- Card image -->
-                      <div class="card_image">
-                        <%= image_tag bike.images[0], class:"img-fluid", style:"height: 500; width: 300;" %>
-                      </div>
-                      <!-- Card body -->
-                      <div class="card_content">
-                        <h4 class="card_title mb-3"> <%= bike.name %> </h4>
-                        <p><i class="fas fa-dollar-sign"></i> <%= bike.price %> </p>
-                        <hr>
-                        <%= link_to "More Info", bike_path(bike), class:"mb-2 btn btn-outline-dark"%>
-                      </div>
-                    </div>
-                <% end %>
-                  </li>
-                </ul>
-            </div>
-            <hr>
-
-            <!-- Rentals/Bookings -->
-
-            <div class="py-4 px-4">
-                <div class="d-flex align-items-center justify-content-between mb-3">
-                  <h5 class="mb-0">Recent Rentals</h5><a href="#" class="btn btn-link text-muted">Show all</a>
-                </div>
-                <ul class="cards">
-                <% @user.bookings.each do |booking| %>
-                  <li class="cards_item">
-                  <div class="card">
-                    <!-- Card image -->
-                    <div class="card_image">
-                        <%= image_tag booking.bike.images[0], class:"img-fluid", style:"height: 500; width: 300;" %>
-                    </div>
-                    <!-- Card body -->
-                    <div class="card_content">
-                        <h4 class="card_title mb-3">Rented -
-                            <%= booking.from.strftime("%d/%-m/%Y") %> -
-                            <%= booking.till.strftime("%d/%-m/%Y") %>
-                        </h4>
-                        <!-- Avatar image and Review link -->
-                        <%= image_tag booking.bike.user.avatar, class:"img-fluid mr-4", style: "height: 50px; width: 50px; border-radius: 50%;" %>
-                        <%= link_to 'Add a review', new_booking_review_path(booking), class:"btn-sm btn-primary" %>
-                    </div>
-                  </div>
-                <% end %>
-                  </li>
-                </ul>
-            </div>
+      <div class="py-4 px-4">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <h5 class="mb-0">Recent Listings</h5><a href="#" class="btn btn-link text-muted">Show all</a>
           </div>
-</div>
+          <ul class="cards">
+          <% @user.bikes.each do |bike| %>
+            <li class="cards_item">
+              <!-- Listing Card -->
+              <div class="card">
+                <!-- Card image -->
+                <div class="card_image">
+                  <%= image_tag bike.images[0], class:"img-fluid", style:"height: 500; width: 300;" %>
+                </div>
+                <!-- Card body -->
+                <div class="card_content">
+                  <h4 class="card_title mb-3"> <%= bike.name %> </h4>
+                  <p><i class="fas fa-dollar-sign"></i> <%= bike.price %> </p>
+                  <hr>
+                  <%= link_to "More Info", bike_path(bike), class:"mb-2 btn btn-outline-dark"%>
+                </div>
+              </div>
+          <% end %>
+            </li>
+          </ul>
+      </div>
+      <hr>
+
+      <!-- Rentals/Bookings -->
+
+      <div class="py-4 px-4">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <h5 class="mb-0">Recent Rentals</h5><a href="#" class="btn btn-link text-muted">Show all</a>
+          </div>
+          <ul class="cards">
+          <% @user.bookings.each do |booking| %>
+            <li class="cards_item">
+            <div class="card">
+              <!-- Card image -->
+              <div class="card_image">
+                  <%= image_tag booking.bike.images[0], class:"img-fluid", style:"height: 500; width: 300;" %>
+              </div>
+              <!-- Card body -->
+              <div class="card_content">
+                  <h4 class="card_title mb-3">Rented -
+                      <%= booking.from.strftime("%d/%-m/%Y") %> -
+                      <%= booking.till.strftime("%d/%-m/%Y") %>
+                  </h4>
+                  <!-- Avatar image and Review link -->
+                  <%= image_tag booking.bike.user.avatar, class:"img-fluid mr-4", style: "height: 50px; width: 50px; border-radius: 50%;" %>
+                  <%= link_to 'Add a review', new_booking_review_path(booking), class:"btn-sm btn-primary" %>
+              </div>
+            </div>
+          <% end %>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </div>
 </div>
