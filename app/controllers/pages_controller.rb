@@ -9,4 +9,7 @@ class PagesController < ApplicationController
 
     authorize @user
   end
+
+  def destinations
+  end
 end

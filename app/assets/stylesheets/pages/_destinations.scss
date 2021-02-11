@@ -1,0 +1,34 @@
+#destination-map { position:absolute; top:0; bottom:0; width:100%; }
+#destination-map {
+    position: fixed;
+    width:50%;
+}
+#destinations {
+    width: 50%;
+    margin-left: 50%;
+    font-family: sans-serif;
+    overflow-y: scroll;
+    background-color: #fafafa;
+}
+.section-destination-page {
+  box-sizing:border-box;
+  padding: 25px 50px;
+  line-height: 25px;
+  border-bottom: 1px solid #ddd;
+  opacity: 0.25;
+  height: 100%;
+}
+
+.section-destination-page.active {
+    opacity: 1;
+}
+
+.section-destination-page:last-child {
+    border-bottom: none;
+}
+
+.image-destination-page {
+  width: 100%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  border-radius: 4px;
+}
