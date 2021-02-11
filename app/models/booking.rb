@@ -25,7 +25,6 @@ class Booking < ApplicationRecord
       errors.add(:bike, "You can't book your own bike")
     end
   end
-
 end
 
 # https://github.com/seejohnrun/ice_cube
