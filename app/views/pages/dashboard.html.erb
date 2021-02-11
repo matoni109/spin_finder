@@ -39,6 +39,27 @@
               </div>
           </div>
 
+      <!-- Display your own pending bookings -->
+        <!-- Display current status -->
+
+      <!-- Display bookings someone has made on your bikes -->
+        <!-- Needs Accept/Reject button -->
+
+      <div class="py-4 px-4">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <h5 class="mb-0">Approve/Reject Bookings</h5>
+        </div>
+
+        <% @user.bikes.each do |bike| %>
+        <% bike.bookings.each do |booking| %>
+          <p> <i class="fas fa-clock"></i> Expires: <%= booking.till.strftime("%d/%-m/%Y") %></p>
+          <!-- If user clicks on approve, refresh page and show a ✅ -->
+          <%= link_to "Approve", booking_path(booking, status: "Approved"), method: :patch, :class => 'btn-sm btn-success'%>
+          <%= link_to "Deny", dashboard_path, method: :patch, :class => 'btn-sm btn-danger'%>
+          <% end %>
+        <% end %>
+      </div>
+
       <!-- Listings -->
 
       <div class="py-4 px-4">
@@ -91,6 +112,11 @@
                   <!-- Avatar image and Review link -->
                   <%= image_tag booking.bike.user.avatar, class:"img-fluid mr-4", style: "height: 50px; width: 50px; border-radius: 50%;" %>
                   <%= link_to 'Add a review', new_booking_review_path(booking), class:"btn-sm btn-primary" %>
+
+                  <!-- If booking has finished, don't show booking.status -->
+                  <%# if booking.till.strftime("%d/%-m/%Y") < Time.now.strftime("%d/%-m/%Y") %>
+                  <%= booking.status %>
+
               </div>
             </div>
           <% end %>

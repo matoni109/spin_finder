@@ -46,10 +46,11 @@ class BookingsController < ApplicationController
   def update
     # gets set
     @user = current_user.id
-    @bike = Bike.find(params[:bike_id])
-    @booking = Booking.new(booking_params)
+    # @bike = Bike.find(params[:bike_id])
+    @booking = Booking.find(params[:id])
     # @booking = booking.update!(rating: 0)
-
+    # @booking.status = "Approved"
+    @booking.status = params[:status]
     authorize @booking
 
     # raise
@@ -73,7 +74,7 @@ class BookingsController < ApplicationController
   private
 
   def set_booking
-    @booking = booking.find(params[:id])
+    @booking = Booking.find(params[:id])
     authorize @booking
   end
 
@@ -84,14 +85,13 @@ class BookingsController < ApplicationController
   def set_total_price(id)
     # raise
     @booking = Booking.find(id)
-    @bike = Bike.find(params[:bike_id])
+    # @bike_id = @booking.bike_id
     start_book = params[:booking][:from]
     end_book = params[:booking][:till]
-    bike_id = params[:bike_id]
 
     total_days = (Date.parse(end_book)- Date.parse(start_book)).to_i
 
-    total_price = total_days * @bike.price
+    total_price = total_days * @booking.bike.price
     @booking.update(total_price: total_price)
 
   end
