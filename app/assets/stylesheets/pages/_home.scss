@@ -1,4 +1,5 @@
 // Specific CSS for your home-page
+
 .card-overlay {
   position: absolute;
   display: flex;
@@ -14,13 +15,16 @@
   width: 100%;
   overflow: hidden;
   opacity: 0;
-  padding: 5px;
-  border-radius: 10px;
+  padding: 9px;
+  border-radius: 4px;
   transition: .5s ease;
-  background-color: #586F7C;color:#fff;
+  background: #8797B2;
+
+  color: white;
+  font-family: 'Montserrat', 'open-sans';
+  font-weight: 700;
     a {
     text-decoration: none;
-    opacity: 1;
     border-radius: 12px;
   }
 }
@@ -29,9 +33,9 @@
   opacity: 0.9;
 }
 
+
 .card-bike-category {
   position: relative;
-  padding: 0;
   height: 200px;
   .img-fluid {
     height: 100%;
