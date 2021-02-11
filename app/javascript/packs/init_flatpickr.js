@@ -31,4 +31,4 @@ const initFlatPicker = () => {
 };
 
 
-export { initAutocomplete };
+export { initFlatPicker };
