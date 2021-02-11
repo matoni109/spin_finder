@@ -5,14 +5,20 @@
 .cover {
     background-image: url(https://images.unsplash.com/photo-1530305408560-82d13781b33a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80);
     background-size: cover;
-    background-repeat: no-repeat
+    background-repeat: no-repeat;
 }
 
 #dashboard {
     margin-top: 0;
     background: #654ea3;
     background: linear-gradient(to left, #b993d6, #8ca6db);
-    min-height: 100vh
+    min-height: 100vh;
+    margin: 0 auto;
+}
+
+.row {
+  max-width: 1450px;
+  margin: 10px auto;
 }
 
 
@@ -59,6 +65,10 @@
 .card_content {
   padding: 1rem;
   background: white;
+    a {
+      text-decoration: none;
+      padding: 8px;
+    }
 }
 
 .card_title {
