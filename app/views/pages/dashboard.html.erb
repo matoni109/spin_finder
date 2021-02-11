@@ -54,8 +54,9 @@
         <% bike.bookings.each do |booking| %>
           <p> <i class="fas fa-clock"></i> Expires: <%= booking.till.strftime("%d/%-m/%Y") %></p>
           <!-- If user clicks on approve, refresh page and show a ✅ -->
-          <%= link_to "Approve", booking_path(booking, status: "Approved"), method: :patch, :class => 'btn-sm btn-success'%>
-          <%= link_to "Deny", dashboard_path, method: :patch, :class => 'btn-sm btn-danger'%>
+          <%= booking.status %>
+          <%= link_to "Approve", accept_booking_path(booking), method: :post, :class => 'btn-sm btn-success'%>
+          <%= link_to "Deny", deny_booking_path(booking), method: :post, :class => 'btn-sm btn-danger'%>
           <% end %>
         <% end %>
       </div>
@@ -109,6 +110,7 @@
                       <%= booking.from.strftime("%d/%-m/%Y") %> -
                       <%= booking.till.strftime("%d/%-m/%Y") %>
                   </h4>
+
                   <!-- Avatar image and Review link -->
 
                   <div class="d-flex justify-content-between">
@@ -118,7 +120,7 @@
                     <div class='text-center py-3'>
                       <%= link_to 'Add a review', new_booking_review_path(booking), class:"btn-sm btn-primary" %>
                       <%= link_to "", booking_path(booking), class: "fas fa-trash-alt", method: :delete, data: { confirm: "Are you sure?" } %>
-                      <%= link_to "", edit_booking_path(booking), class:"fas fa-pencil-alt"%>
+                      <%= link_to "", edit_booking_path(booking), class:"fas fa-pencil-alt" %>
                       <%= booking.status %>
                     </div>
                   </div>

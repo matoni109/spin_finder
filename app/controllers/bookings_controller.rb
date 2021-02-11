@@ -1,6 +1,6 @@
 require 'date'
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :edit, :destroy]
+  before_action :set_booking, only: [:show, :edit, :destroy, :accept, :deny]
 
   # def index
   #   @bookings = policy_scope(Bike).order(created_at: :desc)
@@ -69,6 +69,15 @@ class BookingsController < ApplicationController
     @booking.destroy
     # no need for app/views/bookings/destroy.html.erb
     redirect_to dashboard_path
+  end
+
+  def accept
+    @booking.update(status: "Approved")
+  end
+
+
+  def deny
+    @booking.update(status: "Denied")
   end
 
   private
