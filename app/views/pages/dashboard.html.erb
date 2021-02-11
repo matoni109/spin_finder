@@ -60,6 +60,8 @@
                   <p><i class="fas fa-dollar-sign"></i> <%= bike.price %> </p>
                   <hr>
                   <%= link_to "More Info", bike_path(bike), class:"mb-2 btn btn-outline-dark"%>
+                  <%= link_to "", bike_path(bike), class: "fas fa-trash-alt", method: :delete, data: { confirm: "Are you sure?" } %>
+                  <%= link_to "", edit_bike_path(bike), class:"fas fa-pencil-alt", method: :patch %>
                 </div>
               </div>
           <% end %>
