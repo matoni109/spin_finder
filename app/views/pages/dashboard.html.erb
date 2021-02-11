@@ -110,13 +110,18 @@
                       <%= booking.till.strftime("%d/%-m/%Y") %>
                   </h4>
                   <!-- Avatar image and Review link -->
-                  <%= image_tag booking.bike.user.avatar, class:"img-fluid mr-4", style: "height: 50px; width: 50px; border-radius: 50%;" %>
-                  <%= link_to 'Add a review', new_booking_review_path(booking), class:"btn-sm btn-primary" %>
 
-                  <!-- If booking has finished, don't show booking.status -->
-                  <%# if booking.till.strftime("%d/%-m/%Y") < Time.now.strftime("%d/%-m/%Y") %>
-                  <%= booking.status %>
-
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <%= image_tag booking.bike.user.avatar, class:"img-fluid mr-4", style: "height: 50px; width: 50px; border-radius: 50%;" %>
+                    </div>
+                    <div class='text-center py-3'>
+                      <%= link_to 'Add a review', new_booking_review_path(booking), class:"btn-sm btn-primary" %>
+                      <%= link_to "", booking_path(booking), class: "fas fa-trash-alt", method: :delete, data: { confirm: "Are you sure?" } %>
+                      <%= link_to "", edit_booking_path(booking), class:"fas fa-pencil-alt"%>
+                      <%= booking.status %>
+                    </div>
+                  </div>
               </div>
             </div>
           <% end %>

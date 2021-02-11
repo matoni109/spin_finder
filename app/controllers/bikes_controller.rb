@@ -50,7 +50,7 @@ class BikesController < ApplicationController
 
     authorize @bike
 
-    # raise
+    #raise
     if @bike.valid?
       @bike.save
       redirect_to dashboard_path
@@ -96,7 +96,7 @@ class BikesController < ApplicationController
   end
 
   def bike_params
-    params.require(:bike).permit( :price, :rating, :name,  :description, :location, :user_id, images: [])
+    params.require(:bike).permit( :price, :rating, :name,  :description, :address, :user_id, images: [])
   end
 
   def has_reviews?
