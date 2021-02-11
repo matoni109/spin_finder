@@ -33,10 +33,12 @@ class BookingsController < ApplicationController
     if @booking.valid?
       @booking.save
       set_total_price(@booking.id) ## call method
+      redirect_to dashboard_path
     else
+      flash[:alert] = @booking.errors.full_messages.to_sentence
       render :new
     end
-    redirect_to dashboard_path
+
   end
 
   def edit # need to remove images / change them

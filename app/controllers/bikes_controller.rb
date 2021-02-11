@@ -32,6 +32,8 @@ class BikesController < ApplicationController
 
   def show
     # set with :set_bike
+    @booking = Booking.new
+    @user = current_user
     @review = Review.new()
   end
 
