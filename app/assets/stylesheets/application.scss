@@ -12,7 +12,8 @@
 @import 'mapbox-gl/dist/mapbox-gl';
 // Mapbox searching
 @import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder';
-
+// Flat Picker
+@import 'flatpickr/dist/flatpickr';
 // Your CSS partials
 @import "components/index";
 @import "pages/index";

@@ -10,8 +10,14 @@ class Booking < ApplicationRecord
 
 
   ## TODO User can not book his own bike
-  private
 
+
+  def unavailable_dates
+    bookings.pluck(:from, :till).map do |range|
+      { from: range[0], to: range[1] }
+    end
+  end
+  private
   def end_date_after_start_date
     return if till.blank? || from.blank?
 
