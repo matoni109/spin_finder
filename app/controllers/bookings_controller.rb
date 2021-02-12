@@ -43,6 +43,7 @@ class BookingsController < ApplicationController
 
   def edit # need to remove images / change them
     # gets set
+    @bike = Bike.find(@booking.bike.id)
   end
 
   def update
@@ -67,7 +68,7 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    # gets set
+    # raise
     @booking.destroy
     # no need for app/views/bookings/destroy.html.erb
     redirect_to dashboard_path
@@ -99,7 +100,8 @@ class BookingsController < ApplicationController
     start_book = params[:booking][:from]
     end_book = params[:booking][:till]
 
-    total_days = (Date.parse(end_book)- Date.parse(start_book)).to_i
+    total_days = (Date.parse(end_book)- Date.parse(start_book))
+    total_days < 1 ? 1 : (Date.parse(end_book)- Date.parse(start_book)).to_i
 
     total_price = total_days * @booking.bike.price
     @booking.update(total_price: total_price)
