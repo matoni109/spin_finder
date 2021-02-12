@@ -1,5 +1,5 @@
 .carousel-item img {
-  height: 600px;
+  height: 400px;
   object-fit: cover;
   background-size: cover;
   background-position: center;
@@ -17,7 +17,7 @@
 }
 
 .avail h6 {
-  background-color:black;
+  // background-color:black;
   margin: 20px;
 }
 
@@ -31,7 +31,7 @@ h3 {
 }
 
 .avail {
-  color: green;
+  color: #2ECC40;
 }
 
 .unavail {
@@ -44,20 +44,21 @@ h3 {
 
 .container {
   font-weight: 900;
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: "Montserrat", "Helvetica", "sans-serif";
 }
 
 h3{
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: "Montserrat", "Helvetica", "sans-serif";
+  font-weight: lighter;
 }
 
 h5 {
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: "Montserrat", "Helvetica", "sans-serif";
 }
 
 
 .details {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url(https://images.unsplash.com/photo-1565291395961-ec8c830a1227?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=668&q=80);
+  // background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url(https://images.unsplash.com/photo-1565291395961-ec8c830a1227?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=668&q=80);
   background-size:cover;
   background-position: center;
   left:30px;
@@ -68,17 +69,17 @@ h5 {
   height: 20%;
   padding:60px;
   border-radius: 4px;
-  background-color: white;
+  // background-color: black;
   border: 1px solid #c3c3c3;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-  color:white;
+  color:black;
     h5 {
       padding: 8px;
     }
 }
 
 .details:hover {
-
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 // .content {
