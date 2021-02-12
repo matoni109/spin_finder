@@ -29,10 +29,12 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'faker'
 gem 'font-awesome-sass', '~> 5.12.0'
 gem 'geocoder'
+gem 'pg_search', '~> 2.3.0'
 gem 'pry-byebug'
 gem 'pretender'
 gem 'pundit'
 gem 'simple_form'
+gem 'turbolinks_render'
 
 # Use Active Storage variant
 # Use Active Storage variant

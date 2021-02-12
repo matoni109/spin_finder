@@ -44,10 +44,13 @@ class BookingsController < ApplicationController
   def edit # need to remove images / change them
     # gets set
     @bike = Bike.find(@booking.bike.id)
+
   end
 
   def update
+
     @booking = Booking.find(params[:id])
+
     @bike = @booking.bike_id
     @booking.user = current_user
     # @booking.errors.full_messages
@@ -58,6 +61,7 @@ class BookingsController < ApplicationController
 
 
     if @booking.valid?
+      # raise
       @booking.update(till: params["booking"][:till], from: params["booking"][:from])
       set_total_price(@booking.id) ## call method
       redirect_to dashboard_path

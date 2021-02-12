@@ -5,6 +5,7 @@ const initFlatPicker = () => {
 
     // Check that the query selector id matches the one you put around your form.
     if (startDateInput) {
+
         const unavailableDates = JSON.parse(document.querySelector('#bike-booking-dates').dataset.unavailable)
         endDateInput.disabled = true
 
