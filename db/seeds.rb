@@ -145,71 +145,71 @@ puts "--- Making Bikes Ended !"
 
 puts "-- Making Bookings !"
 # Day.where(:reference_date => 3.months.ago..Time.now).count
-#=> 721
-# book_fav = 0
-# until book_fav == 10 do
-#     ## make the instance
-#     make_me = Booking.new(
-#       # total_price: rand(25..85), ## TODO:: work out total price
-#       from: Time.now + (rand(10..20) * rand(30000..40000 )),
-#       till: Time.now + (rand(30..40) * rand(70000..90000 )),
-#       user_id: User.pluck(:id).sample,
-#       bike_id: Bike.pluck(:id).sample
-#     )
-#     # binding.pry
-#     # if make_me.bike.user.id != make_me.user.id # can't book your own bike
-#     #   make_me.save!
-#     #   book_fav += 1
-#     #   puts "made Booking # #{make_me.id}"
-#     # else
-#     #   puts "Booking didn't work out ..."
-#     # end
-
-#     if make_me.valid?
-#       make_me.save!
-#       book_fav += 1
-#       puts "made Booking # #{make_me.id}"
-#     else
-#       puts "Fav didn't work out ..."
-#     end
-
-#   end
-puts "--- Making Bookings ENDED !"
-
-puts "--- Making Reviews Start !"
-
-25.times do
-  ## make the instance
-  make_me = Review.create!(
-    content: Faker::TvShows::GameOfThrones.quote,
-    rating: rand(1..5),
-    booking_id: Booking.pluck(:id).sample
-  )
-  puts "made Review # #{make_me.id}"
-
-end
-
-puts "--- Making Reviews ENDED !"
-
-puts "--- Making Favourites Start !"
-
-count_fav = 0
-until count_fav == 10 do
-    make_me = Favourite.new(
-      favorited_type: Bike,
-      favorited_id: Bike.pluck(:id).sample,
-      user_id: User.pluck(:id).sample
+# => 721
+book_fav = 0
+until book_fav == 35 do
+    ## make the instance
+    make_me = Booking.new(
+      # total_price: rand(25..85), ## TODO:: work out total price
+      from: Time.now + (rand(10..20) * rand(30000..40000 )),
+      till: Time.now + (rand(30..40) * rand(70000..90000 )),
+      user_id: User.pluck(:id).sample,
+      bike_id: Bike.pluck(:id).sample
     )
+    # binding.pry
+    # if make_me.bike.user.id != make_me.user.id # can't book your own bike
+    #   make_me.save!
+    #   book_fav += 1
+    #   puts "made Booking # #{make_me.id}"
+    # else
+    #   puts "Booking didn't work out ..."
+    # end
+
     if make_me.valid?
       make_me.save!
-      count_fav += 1
-      puts "made Favourite # #{make_me.id}"
+      book_fav += 1
+      puts "made Booking # #{make_me.id}"
     else
       puts "Fav didn't work out ..."
     end
+
+  end
+  puts "--- Making Bookings ENDED !"
+
+  puts "--- Making Reviews Start !"
+
+  25.times do
+    ## make the instance
+    make_me = Review.create!(
+      content: Faker::TvShows::GameOfThrones.quote,
+      rating: rand(1..5),
+      booking_id: Booking.pluck(:id).sample
+    )
+    puts "made Review # #{make_me.id}"
+
   end
 
   puts "--- Making Reviews ENDED !"
-  puts "---"
-  puts "---"
-  puts "--- GAME OVER ---"
+
+  puts "--- Making Favourites Start !"
+
+  count_fav = 0
+  until count_fav == 10 do
+      make_me = Favourite.new(
+        favorited_type: Bike,
+        favorited_id: Bike.pluck(:id).sample,
+        user_id: User.pluck(:id).sample
+      )
+      if make_me.valid?
+        make_me.save!
+        count_fav += 1
+        puts "made Favourite # #{make_me.id}"
+      else
+        puts "Fav didn't work out ..."
+      end
+    end
+
+    puts "--- Making Reviews ENDED !"
+    puts "---"
+    puts "---"
+    puts "--- GAME OVER ---"
