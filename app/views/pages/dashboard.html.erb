@@ -7,7 +7,7 @@
                         <div class="profile mr-3">
                             <%= image_tag current_user.avatar, class:"img-fluid mb-2 img-thumbnail", style: "width: 130px;" %>
                             <!-- Edit Profile section? -->
-                            <a href="#" class="btn btn-outline-dark btn-sm btn-block">Edit profile</a>
+                            <%= link_to "Edit Profile", edit_user_registration_path(@user), :class => 'btn btn-outline-dark btn-sm btn-block'%>
                         </div>
                         <div class="media-body mb-5 text-white">
                             <h4 class="mt-0 mb-0">

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/show'
   get 'dashboard/index'
   devise_for :users
   root to: 'pages#home' # landing page => bike show
@@ -20,5 +21,6 @@ Rails.application.routes.draw do
   # get 'bookings/show'
   # get 'bikes/index'
   # get 'bikes/show'
+  get 'user/:id', to: 'users#show', as: :profile
   get '/dashboard', to: 'pages#dashboard'
 end
