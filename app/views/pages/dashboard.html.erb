@@ -63,8 +63,8 @@
           <% end %>
         </div>
           <p> <i class="fas fa-clock"></i> Expires: <%= booking.till.strftime("%d/%-m/%Y") %></p>
-          <%= link_to "Approve", accept_booking_path(booking), remote: true, method: :post, :class => 'btn-sm btn-success p-2'%>
-          <%= link_to "Deny", deny_booking_path(booking), remote: true, method: :post, :class => 'btn-sm btn-danger p-2'%>
+          <%= link_to "Approve", accept_booking_path(booking), method: :post, remote: true, :class => 'btn-sm btn-success p-2'%>
+          <%= link_to "Deny", deny_booking_path(booking), method: :post, remote: true, :class => 'btn-sm btn-danger p-2'%>
           <% end %>
         </div>
         <% end %>
