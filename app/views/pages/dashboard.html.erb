@@ -102,15 +102,22 @@
                                         <h4 class="card_title mb-3">
                                             <%= bike.name %>
                                         </h4>
-                                        <p><i class="fas fa-dollar-sign"></i>
-                                            <%= bike.price %>
-                                        </p>
+                                        <div class="price-wrap d-flex justify-content-between">
+                                            <p><i class="fas fa-dollar-sign"></i>
+                                                <%= bike.price %> per / day
+                                            </p>
+                                            <p><i class="fas fa-star"></i></i>
+                                                <%= bike.rating %>/5 (
+                                                <%= bike.reviews.count %> )
+                                            </p>
+                                        </div>
                                         <hr>
                                         <div class="d-flex justify-content-end">
                                             <%= link_to "", bike_path(bike), class:"mb-2 mr-1 p-2 btn btn-outline-primary fas fa-info-circle"%>
                                             <%= link_to "", bike_path(bike), class: "mb-2 mr-1 p-2 btn btn-outline-danger fas fa-trash-alt", method: :delete, data: { confirm: "Are you sure?" } %>
-                                            <%= link_to "", edit_bike_path(bike), class:"mb-2 p-2 btn btn-outline-warning fas fa-pencil-alt", method: :patch %>
+                                            <%= link_to "", edit_bike_path(bike), class:"mb-2 p-2 btn btn-outline-warning fas fa-pencil-alt" %>
                                         </div>
+                                        <!-- /bikes/152/edit -->
                                     </div>
                                 </div>
                                 <% end %>
@@ -138,6 +145,16 @@
                                             <%= booking.from.strftime("%d/%-m/%Y") %> -
                                             <%= booking.till.strftime("%d/%-m/%Y") %>
                                         </h4>
+                                        <div class="price-wrap d-flex justify-content-between">
+                                            <p> Total
+                                                <i class="fas fa-dollar-sign"></i>
+                                                <%= booking.total_price %>
+                                            </p>
+                                            <p><i class="fas fa-star"></i></i>
+                                                <%= booking.bike.rating %>/5 (
+                                                <%= booking.bike.reviews.count %> )
+                                            </p>
+                                        </div>
                                         <!-- Avatar image and Review link -->
                                         <div class="d-flex justify-content-between">
                                             <div>
