@@ -107,7 +107,7 @@
                     <h5><strong>Reviews</strong></h5>
                     <hr>
                     <% @bike.reviews.reverse.each do |review| %>
-                    <div class="single-review" id="review-<%= review.id %>">
+                    <div class="single-review"id="review-<%= review.id %>">
                         <div class="card text-white bg-secondary mb-3 p-3">
                             <h5>Comment</h5>
                             <p>
@@ -116,13 +116,12 @@
                             <h5>Rating</h5>
                             <h5>
                                 <%= review.rating.to_i %> / 5</h5>
-                            <div class="text-right">
-                                <% unless current_user.nil?  %>
+                                <div class="text-right">
                                 <% if review.booking.user_id == current_user.id %>
                                 <%= link_to "", review_path(review), method: :delete, data: { confirm: "Are you sure?" }, remote: true, class: " btn btn-outline-danger fas fa-trash-alt" %>
                                 <% end %>
-                                <% end %>
-                            </div>
+
+                                </div>
                         </div>
                     </div>
                     <% end %>

@@ -38,7 +38,7 @@
 }
 
 .cards_item {
-  display: flex;
+  // display: flex;
   padding: 1rem;
 }
 
@@ -60,6 +60,12 @@
   padding: 1rem;
   background: white;
 }
+
+.card_image {
+  height:250px;
+}
+
+
 
 .card_title {
   color: black;
