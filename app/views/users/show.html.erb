@@ -1,2 +1,164 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<section id="profile">
+    <div class="row py-2 px-5 mt-0">
+        <div class="col-lg-12 col-md-12 mx-auto">
+            <div class="bg-white shadow rounded overflow-hidden">
+                <div class="px-4 pt-5 pb-4 cover">
+                    <div class="media align-items-end profile-head">
+                        <div class="profile mr-3">
+                            <%= image_tag @user.avatar, class:"img-fluid mb-2 img-thumbnail", style: "width: 130px;" %>
+                            <!-- Edit Profile section? -->
+                        </div>
+                        <div class="media-body mb-5 text-white">
+                            <h4 class="mt-0 mb-0">
+                                <%= @user.first_name %>
+                            </h4>
+                            <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>
+                                <%= @user.location %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-light p-4 d-flex justify-content-end text-center">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item">
+                            <h5 class="font-weight-bold mb-0 d-block">
+                                <%= @user.bookings.count %>
+                            </h5>
+                            <small class="text-muted"> <i class="fas fa-list-alt mr-1"></i>Rentals</small>
+                        </li>
+                        <li class="list-inline-item">
+                            <h5 class="font-weight-bold mb-0 d-block">
+                                <%= @user.bikes.count %>
+                            </h5>
+                            <small class="text-muted"> <i class="fas fa-bicycle mr-1"></i>Bikes</small>
+                        </li>
+                        <li class="list-inline-item">
+                            <h5 class="font-weight-bold mb-0 d-block">340</h5>
+                            <small class="text-muted"> <i class="fas fa-user mr-1"></i>Followers</small>
+                        </li>
+                    </ul>
+                </div>
+                <!-- About Section -->
+                <div class="px-4 py-3">
+                    <h5 class="mb-1">About</h5>
+                    <div class="p-4 rounded shadow-sm bg-light">
+                        <p class="font-italic mb-0">
+                            <%= @user.email %>
+                        </p>
+                        <p class="font-italic mb-0">Lives in
+                            <%= @user.location %>
+                        </p>
+                        <p class="font-italic mb-0">
+                            <%= @user.bio %>
+                        </p>
+                    </div>
+                </div>
+                <!-- Display your own pending bookings -->
+                <!-- Display current status -->
+                <!-- Display bookings someone has made on your bikes -->
+                <!-- Needs Accept/Reject button -->
+                <!-- Listings -->
+                <div class="py-4 px-4">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <h5 class="mb-0">
+                            <%= @user.first_name %>'s Bikes</h5>
+                        <a href="#" class="btn btn-link text-muted">Show all</a>
+                    </div>
+                    <ul class="cards">
+                        <% @user.bikes.each do |bike| %>
+                        <li class="cards_item">
+                            <!-- Listing Card -->
+                            <div class="card">
+                                <!-- Card image -->
+                                <div class="card_image">
+                                    <%= image_tag bike.images[0], class:"img-fluid", style:"height: 500; width: 300;" %>
+                                </div>
+                                <!-- Card body -->
+                                <div class="card_content">
+                                    <h4 class="card_title mb-3">
+                                        <%= bike.name %>
+                                    </h4>
+                                    <div class="price-wrap d-flex justify-content-between">
+                                        <p><i class="fas fa-dollar-sign"></i>
+                                            <%= bike.price %> per / day
+                                        </p>
+                                        <p><i class="fas fa-star"></i></i>
+                                            <%= bike.rating %>/5 (
+                                            <%= bike.reviews.count %> )
+                                        </p>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex justify-content-end">
+                                        <%= link_to "", bike_path(bike), class:"mb-2 mr-1 p-2 btn btn-outline-primary fas fa-info-circle"%>
+                                        <% unless current_user.nil?  %>
+                                        <% if current_user.id != @bike.user_id  %>
+                                        <%= link_to "", bike_path(bike), class: "mb-2 mr-1 p-2 btn btn-outline-danger fas fa-trash-alt", method: :delete, data: { confirm: "Are you sure?" } %>
+                                        <%= link_to "", edit_bike_path(bike), class:"mb-2 p-2 btn btn-outline-warning fas fa-pencil-alt" %>
+                                        <% end %>
+                                        <% end %>
+                                    </div>
+                                    <!-- /bikes/152/edit -->
+                                </div>
+                            </div>
+                            <% end %>
+                        </li>
+                    </ul>
+                </div>
+                <hr>
+                <!-- Rentals/Bookings -->
+                <div class="py-4 px-4">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <h5 class="mb-0">
+                            <%= @user.first_name %>'s Rentals</h5>
+                        <a href="#" class="btn btn-link text-muted">Show all</a>
+                    </div>
+                    <ul class="cards">
+                        <% @user.bookings.each do |booking| %>
+                        <li class="cards_item">
+                            <div class="card">
+                                <!-- Card image -->
+                                <div class="card_image">
+                                    <%= image_tag booking.bike.images[0], class:"img-fluid", style:"height: 500; width: 300;" %>
+                                </div>
+                                <!-- Card body -->
+                                <div class="card_content">
+                                    <h4 class="card_title mb-3">Rented -
+                                        <%= booking.from.strftime("%d/%-m/%Y") %> -
+                                        <%= booking.till.strftime("%d/%-m/%Y") %>
+                                    </h4>
+                                    <div class="price-wrap d-flex justify-content-between">
+                                        <p> Total
+                                            <i class="fas fa-dollar-sign"></i>
+                                            <%= booking.total_price %>
+                                        </p>
+                                        <p><i class="fas fa-star"></i></i>
+                                            <%= booking.bike.rating %>/5 (
+                                            <%= booking.bike.reviews.count %> )
+                                        </p>
+                                    </div>
+                                    <!-- Avatar image and Review link -->
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <%= link_to cloudinary_avatar_profile(booking.bike.user.avatar.key), profile_path(booking.bike.user.id) %>
+                                        </div>
+                                        <div class='text-center py-3'>
+                                            <%= link_to "", bike_path(booking.bike), class:"p-2 btn btn-outline-dark fas fa-bicycle" %>
+                                            <% unless current_user.nil?  %>
+                                            <% if current_user.id != @bike.user_id  %>
+                                            <%= link_to '', new_booking_review_path(booking), class:"p-2 btn btn-outline-primary far fa-thumbs-up" %>
+                                            <%= link_to "", booking_path(booking), class: "p-2 btn btn-outline-danger fas fa-trash-alt", method: :delete, data: { confirm: "Are you sure?" } %>
+                                            <%= link_to "", edit_booking_path(booking), class:"p-2 btn btn-outline-warning fas fa-pencil-alt" %>
+                                            <% end %>
+                                            <% end %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <% end %>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
