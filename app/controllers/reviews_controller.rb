@@ -20,11 +20,21 @@ class ReviewsController < ApplicationController
       @bike_rate = calculate_bike_rating(@bike.reviews)
       @bike_up.update!(rating: @bike_rate)
       # binding.pry
-      redirect_to bike_path(@bike)
+      redirect_to bike_path(@bike, anchor: "review-#{@review.id}")
     else
 
       render :new
     end
+  end
+
+  def destroy
+    # @bike = Bike.find(params[:bike_id])
+    @review = Review.find(params[:id])
+    @review.destroy
+    @bike = @review.booking.bike
+    authorize @review
+
+    redirect_to bike_path(@bike, anchor: "review-#{@review.id}")
   end
 
   private
