@@ -145,9 +145,9 @@ puts "--- Making Bikes Ended !"
 
 puts "-- Making Bookings !"
 # Day.where(:reference_date => 3.months.ago..Time.now).count
-#=> 721
+# => 721
 book_fav = 0
-until book_fav == 10 do
+until book_fav == 35 do
     ## make the instance
     make_me = Booking.new(
       # total_price: rand(25..85), ## TODO:: work out total price

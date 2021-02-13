@@ -1,1 +1,14 @@
-<%= render "new_booking_form", booking: @booking %>
+<div class="container mt-5 py-2">
+    <div class="row mx-auto my-3 justify-content-center">
+        <div class="col-6 mt-5">
+            <h2>Edit Your Booking</h2>
+            <div id='bike-booking-dates' data-unavailable="<%= @bike.unavailable_dates.to_json %>">
+                <%= simple_form_for [@bike, @booking], url: booking_path do |f| %>
+                <%= f.input :from, as: :string, type: :text %>
+                <%= f.input :till, as: :string, type: :text %>
+                <%= f.submit "Edit Booking", class: "btn btn-primary" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

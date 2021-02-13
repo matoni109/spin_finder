@@ -1,7 +1,7 @@
 class Booking < ApplicationRecord
   validate :own_bike?, on: :create
   validates :from, :till, presence: true
-  validate :end_date_after_start_date
+  validate :end_date_after_start_date, on: %i[create update]
   ## before create
 
   belongs_to :user
