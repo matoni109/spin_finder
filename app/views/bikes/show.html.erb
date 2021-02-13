@@ -72,7 +72,7 @@
                 </div>
                 <!--       Booking Form -->
                 <div class="description p-3 m-3" id='bike-booking-dates' data-unavailable="<%= @bike.unavailable_dates.to_json %>">
-                    <% if params.permitted? %>
+                    <% unless current_user.nil? %>
                     <% if current_user.id != @bike.user_id  %>
                     <h5><strong>Book
                             <%= @bike.name  %></strong></h5>
@@ -84,12 +84,30 @@
                     <% end %>
                     <% end %>
                 </div>
+                <!-- REVIEWS IF BOOKED -->
+                <div class="review-form p-3 m-3">
+                    <% @bike.bookings.each do |booking| %>
+                    <% unless current_user.nil? %>
+                    <% if booking.user_id == current_user.id %>
+                    <h5><strong>Last booking
+                            <%= booking.from.strftime("%d/%-m/%Y") %></strong></h5>
+                    <hr>
+                    <h4>Add a Review</h4>
+                    <%= simple_form_for([booking, @review], remote: true) do |f| %>
+                    <%= f.input :content, placeholder: 'How was your ride ?', required: true  %>
+                    <%= f.input :rating, placeholder: 'Score 1 - 5', input_html: { min: '1', max: '5' }, required: true  %>
+                    <%= f.submit class: "btn btn-primary" %>
+                    <% end %>
+                    <% end %>
+                    <% end %>
+                    <% end %>
+                </div>
                 <!-- REVIEWS -->
                 <div class="reviews p-3 m-3">
                     <h5><strong>Reviews</strong></h5>
                     <hr>
-                    <% @bike.reviews.each do |review| %>
-                    <div class="single-review">
+                    <% @bike.reviews.reverse.each do |review| %>
+                    <div class="single-review"id="review-<%= review.id %>">
                         <div class="card text-white bg-secondary mb-3 p-3">
                             <h5>Comment</h5>
                             <p>
@@ -97,26 +115,16 @@
                             </p>
                             <h5>Rating</h5>
                             <h5>
+
                                 <%= review.rating.to_i %> / 5</h5>
+                                <div class="text-right">
+                                <% if review.booking.user_id == current_user.id %>
+                                <%= link_to "", review_path(review), method: :delete, data: { confirm: "Are you sure?" }, remote: true, class: " btn btn-outline-danger fas fa-trash-alt" %>
+                                <% end %>
+
+                                </div>
                         </div>
                     </div>
-                    <% end %>
-                </div>
-                <div class="review-form p-3 m-3">
-                    <% @bike.bookings.each do |booking| %>
-                    <% if params.permitted? %>
-                    <% if booking.user_id == current_user.id %>
-                    <h5><strong>Last booking
-                            <%= booking.from %></strong></h5>
-                    <hr>
-                    <h4>Add a Review</h4>
-                    <%= simple_form_for([booking, @review]) do |f| %>
-                    <%= f.input :content, placeholder: 'How was your ride ?', required: true  %>
-                    <%= f.input :rating, placeholder: 'Score 1 - 5', input_html: { min: '1', max: '5' }, required: true  %>
-                    <%= f.submit %>
-                    <% end %>
-                    <% end %>
-                    <% end %>
                     <% end %>
                 </div>
             </div>
