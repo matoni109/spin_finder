@@ -156,14 +156,7 @@ until book_fav == 35 do
       user_id: User.pluck(:id).sample,
       bike_id: Bike.pluck(:id).sample
     )
-    # binding.pry
-    # if make_me.bike.user.id != make_me.user.id # can't book your own bike
-    #   make_me.save!
-    #   book_fav += 1
-    #   puts "made Booking # #{make_me.id}"
-    # else
-    #   puts "Booking didn't work out ..."
-    # end
+
 
     if make_me.valid?
       make_me.save!
@@ -173,7 +166,8 @@ until book_fav == 35 do
       puts "Fav didn't work out ..."
     end
 
-  end
+end
+
   puts "--- Making Bookings ENDED !"
 
   puts "--- Making Reviews Start !"
@@ -208,7 +202,6 @@ until book_fav == 35 do
         puts "Fav didn't work out ..."
       end
     end
-
     puts "--- Making Reviews ENDED !"
     puts "---"
     puts "---"
