@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @bike = Bike.where(user_id: @user.id)
     authorize @user
     # if current_user !=@user
     #   redirect_to root_url
