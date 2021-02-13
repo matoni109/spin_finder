@@ -144,6 +144,7 @@
                                                 <%= image_tag booking.bike.user.avatar, class:"img-fluid mr-4", style: "height: 50px; width: 50px; border-radius: 50%;" %>
                                             </div>
                                             <div class='text-center py-3'>
+                                                <%= link_to "", bike_path(booking.bike), class:"p-2 btn btn-outline-dark fas fa-bicycle" %>
                                                 <%= link_to '', new_booking_review_path(booking), class:"p-2 btn btn-outline-primary far fa-thumbs-up" %>
                                                 <%= link_to "", booking_path(booking), class: "p-2 btn btn-outline-danger fas fa-trash-alt", method: :delete, data: { confirm: "Are you sure?" } %>
                                                 <%= link_to "", edit_booking_path(booking), class:"p-2 btn btn-outline-warning fas fa-pencil-alt" %>

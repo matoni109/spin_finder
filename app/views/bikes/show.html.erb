@@ -88,6 +88,7 @@
                     <hr>
                     <% @bike.reviews.each do |review| %>
                     <div class="single-review">
+                      <div class="card text-white bg-secondary mb-3 p-3">
                         <h5>Comment</h5>
                         <p>
                             <%= review.content %>
@@ -96,6 +97,22 @@
                         <h5>
                             <%= review.rating.to_i %> / 5</h5>
                     </div>
+
+                      </div>
+                    <% end %>
+                </div>
+                <div class="review-form p-3 m-3">
+                  <% @bike.bookings.each do |booking| %>
+                  <% if booking.user_id == current_user.id %>
+                  <h5><strong>Last booking   <%= booking.from %></strong></h5>
+                  <hr>
+                    <h4>Add a Review</h4>
+                        <%= simple_form_for([booking, @review]) do |f| %>
+                        <%= f.input :content, placeholder: 'How was your ride ?', required: true  %>
+                        <%= f.input :rating, placeholder: 'Score 1 - 5', input_html: { min: '1', max: '5' }, required: true  %>
+                        <%= f.submit %>
+                        <% end %>
+                      <% end %>
                     <% end %>
                 </div>
             </div>
