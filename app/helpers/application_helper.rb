@@ -6,8 +6,8 @@ module ApplicationHelper
   end
 
   ### on bikes show page
-  def cloudinary_imgs_cara(key,instance)
-    cl_image_tag(key, :quality=>"auto", :fetch_format=>:auto, :crop=>"fill", :class=>"d-block w-100 img-fluid", :alt=>"#{instance.name}")
+      def cloudinary_imgs_cara(key,instance)
+    cl_image_tag(key, :quality=>"auto", :fetch_format=>:auto, :crop=>"fit", :class=>"d-block mx-auto img-fluid rounded", :alt=>"#{instance.name}")
   end
 
   def cloudinary_avatar_nav(key)
