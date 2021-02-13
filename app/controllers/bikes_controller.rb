@@ -61,12 +61,14 @@ class BikesController < ApplicationController
     end
   end
 
-  def edit # need to remove images / change them
+  def edit
     # gets set
+
   end
 
   def update
     # gets set
+
     @user = current_user.id
     # @bike = Bike.new(bike_params)
     # @bike = Bike.update!(rating: 0)

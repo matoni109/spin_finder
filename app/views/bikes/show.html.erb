@@ -28,37 +28,37 @@
     <div class="inner">
         <div class="name m-3">
             <h3><strong>
-<!--               <i class=" mr-5 fas fa-bicycle"></i>
- -->              <%= @bike.name  %></strong></h3>
+                    <!--               <i class=" mr-5 fas fa-bicycle"></i>
+ -->
+                    <%= @bike.name  %></strong></h3>
         </div>
         <div class="name-avail text-center">
-          <div class="avail">
-            <% if @bike.available == true %>
-            <h6 style="color:##2ECC40">Bike is available</h6>
-            <% else %>
-            <h6 style="color:#FF4136">Bike is unavailable</h6>
-            <% end %>
-          </div>
+            <div class="avail">
+                <% if @bike.available == true %>
+                <h6 style="color:##2ECC40">Bike is available</h6>
+                <% else %>
+                <h6 style="color:#FF4136">Bike is unavailable</h6>
+                <% end %>
+            </div>
         </div>
-
         <div class="row justify-content-center parent">
             <!-- CARD -->
             <div class="details sticky p-3 m-3 text-center col-sm-3">
-
-              <h5>
-                <i style="color:#2ECC40"class="fas fa-dollar-sign"></i>
-                  <%= @bike.price.to_i %> / hr</h5>
-              <hr>
-              <h5> <i style="color:#036CE7" class="fas fa-globe-asia"></i> Find me at:</h5>
-
-              <h6>  <%= @bike.address  %></h6>
-              <hr>
-              <h5>Rating <i style="color:#FF851B" class="far fa-star"></i> / 5</h5>
-              <h6>
-                <% if @bike.rating == 0 %>
-                Bike has no reviews
-                <% else %>
-                <%= @bike.rating %> / 5 </h6>
+                <h5>
+                    <i style="color:#2ECC40" class="fas fa-dollar-sign"></i>
+                    <%= @bike.price.to_i %> / hr</h5>
+                <hr>
+                <h5> <i style="color:#036CE7" class="fas fa-globe-asia"></i> Find me at:</h5>
+                <h6>
+                    <%= @bike.address  %>
+                </h6>
+                <hr>
+                <h5>Rating <i style="color:#FF851B" class="far fa-star"></i> / 5</h5>
+                <h6>
+                    <% if @bike.rating == 0 %>
+                    Bike has no reviews
+                    <% else %>
+                    <%= @bike.rating %> / 5 </h6>
                 <% end %>
                 <hr>
                 <%= link_to "Ride!", new_bike_booking_path(@bike), class:" btn-lg btn-primary" %>
@@ -72,6 +72,7 @@
                 </div>
                 <!--       Booking Form -->
                 <div class="description p-3 m-3" id='bike-booking-dates' data-unavailable="<%= @bike.unavailable_dates.to_json %>">
+                    <% if params.permitted? %>
                     <% if current_user.id != @bike.user_id  %>
                     <h5><strong>Book
                             <%= @bike.name  %></strong></h5>
@@ -79,6 +80,7 @@
                     <%= f.input :from, as: :string, type: :text %>
                     <%= f.input :till, as: :string, type: :text %>
                     <%= f.submit "Book", class: "btn btn-primary" %>
+                    <% end %>
                     <% end %>
                     <% end %>
                 </div>
