@@ -9,6 +9,14 @@ class UserPolicy < ApplicationPolicy
     return true
   end
 
+  def users?
+    return true
+  end
+
+  def show?
+    return true
+  end
+
   private
 
   def user_is_owner_or_admin?

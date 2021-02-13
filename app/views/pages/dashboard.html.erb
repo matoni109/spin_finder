@@ -7,7 +7,7 @@
                         <div class="profile mr-3">
                             <%= image_tag current_user.avatar, class:"img-fluid mb-2 img-thumbnail", style: "width: 130px;" %>
                             <!-- Edit Profile section? -->
-                            <a href="#" class="btn btn-outline-dark btn-sm btn-block">Edit profile</a>
+                            <%= link_to "Edit Profile", edit_user_registration_path(@user), :class => 'btn btn-outline-dark btn-sm btn-block'%>
                         </div>
                         <div class="media-body mb-5 text-white">
                             <h4 class="mt-0 mb-0">
@@ -158,7 +158,7 @@
                                         <!-- Avatar image and Review link -->
                                         <div class="d-flex justify-content-between">
                                             <div>
-                                                <%= image_tag booking.bike.user.avatar, class:"img-fluid mr-4", style: "height: 50px; width: 50px; border-radius: 50%;" %>
+                                                <%= link_to cloudinary_avatar_profile(booking.bike.user.avatar.key), profile_path(booking.bike.user.id) %>
                                             </div>
                                             <div class='text-center py-3'>
                                                 <%= link_to "", bike_path(booking.bike), class:"p-2 btn btn-outline-dark fas fa-bicycle" %>
