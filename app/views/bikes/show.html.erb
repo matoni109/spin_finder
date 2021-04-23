@@ -117,7 +117,7 @@
                             <h5>
                                 <%= review.rating.to_i %> / 5</h5>
                                 <div class="text-right">
-                                <% if review.booking.user_id == current_user.id %>
+                                <% if current_user && review.booking.user_id == current_user.id %>
                                 <%= link_to "", review_path(review), method: :delete, data: { confirm: "Are you sure?" }, remote: true, class: " btn btn-outline-danger fas fa-trash-alt" %>
                                 <% end %>
 
