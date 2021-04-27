@@ -1,0 +1,19 @@
+RunKit + 
+Try any Node.js package in your browser
+This is a playground to test code. It runs a full Node.js environment with all npm packages installed. Try it out:
+
+
+all documents on RunKit are public
+require() any package directly from npm
+use arrow functions, classes, template strings, and most of ES6
+await any promise instead of using callbacks (example)
+create your own embedded node.js snippets
+This service is provided by RunKit and is not affiliated with npm, Inc or the package authors.
+
+search npm
+@types/spin v5.3.30
+TypeScript definitions for Spin.js 4.3.2
+OverviewBrowse Files
+
+×
+RunKit is a free, in-browser JavaScript dev environment.
