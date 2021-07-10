@@ -58,7 +58,7 @@ puts "-- Making Humans"
 
   make_me = User.create!(
     first_name: "Spin",
-    last_name: "Daddy",
+    last_name: "Danny",
     bio: "$GME goes BRRRRRRRR 💎🙌",
     location: "Melbourne",
     email: "spin@gmail.com",
