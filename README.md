@@ -76,5 +76,3 @@ Feel free to go to your account page when you can see your bikes for rent - the 
 - Mapbox/Geocoder
 - Pundit
 - HTML, CSS, Javascript, Ruby on Rails
-
-### Made with ❤️ by Julian, Chris & Tom
